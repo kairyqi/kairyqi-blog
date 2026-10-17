@@ -266,3 +266,9 @@
 .main-column .section-heading .section-kicker{display:block;font-family:inherit;font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.065em;line-height:1.25;color:inherit;margin:0}
 @media(max-width:900px){.main-column .section-heading .section-kicker{font-size:20px}}
 @media(max-width:480px){.main-column .section-heading .section-kicker{font-size:18px}}
+
+/* Compact numbered section labels; descriptions retain only the headline sentence */
+.main-column .section-heading .section-kicker{font:700 11px var(--mono);letter-spacing:.12em;line-height:1.5;color:var(--blue-deep);margin:0}
+.main-column .heading-aside p{font-size:14px;line-height:1.7}
+.main-column .heading-aside p strong{font:inherit;letter-spacing:inherit}
+@media(max-width:720px){.main-column .section-heading .section-kicker{font-size:10px}.main-column .heading-aside p{font-size:12px}}
