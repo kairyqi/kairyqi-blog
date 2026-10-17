@@ -156,4 +156,5 @@
 .detail-pagination a:last-child{text-align:right}
 .detail-pagination small{color:#8b93a3;font:10px var(--mono)}
 .detail-pagination strong{font-size:12px}
+.empty-state{grid-column:1/-1;min-height:135px;display:flex;align-items:center;justify-content:center;padding:24px;border:1px dashed #dce1eb;border-radius:5px;color:#858d9b;font-size:12px;text-align:center;background:rgba(255,255,255,.48)}
 @media(max-width:720px){.heading-aside{align-items:flex-start;margin-top:8px}.heading-aside p{text-align:left;font-size:10px}.archive-header{height:64px}.archive-main{padding-top:43px;padding-bottom:42px}.archive-row{grid-template-columns:1fr 28px;gap:10px;padding:17px 3px}.archive-date{grid-column:1/-1}.archive-row-main strong{font-size:15px}.archive-excerpt{font-size:11px}.pagination{gap:12px}.archive-footer{font-size:9px}.detail-main{padding-top:18px}.detail-cover{height:180px;padding:18px}.detail-cover-mark{font-size:180px}.detail-article{padding:27px 0 21px}.detail-lead{font-size:14px}.detail-body{font-size:13px}.detail-pagination{gap:8px}.detail-pagination a{padding:12px}.detail-pagination strong{font-size:10px}}
