@@ -212,3 +212,23 @@
   .main-column .favorite-info p{font-size:12px}
   .main-column .favorite-meta,.main-column .favorite-meta b{font-size:9px}
 }
+
+/* Section headings use the kicker for the section label and a combined copy line */
+.body-layout .section-kicker{font:700 11px var(--mono);letter-spacing:.12em;margin-bottom:10px}
+.body-layout .section-heading>div:first-child>p{margin:0;color:#838998;font-size:14px;line-height:1.8}
+.body-layout .section-heading>div:first-child>p strong{color:#202638;font-size:17px;font-weight:750;letter-spacing:-.025em}
+.notes-section .section-heading>div:first-child>p{color:#aeb8cc}
+.notes-section .section-heading>div:first-child>p strong{color:#f4f6fb}
+.favorite-meta{font-size:11px}
+.favorite-meta b{font-size:11px;padding:5px 8px}
+.favorite-info{padding:18px}
+.favorite-info h3{font-size:18px;margin:13px 0 7px}
+.favorite-info p{font-size:14px;line-height:1.75}
+@media(max-width:720px){
+  .body-layout .section-heading>div:first-child>p{font-size:12px;line-height:1.75}
+  .body-layout .section-heading>div:first-child>p strong{font-size:15px}
+  .main-column .favorite-meta,.main-column .favorite-meta b{font-size:10px}
+  .main-column .favorite-info{padding:15px}
+  .main-column .favorite-info h3{font-size:16px;margin:11px 0 6px}
+  .main-column .favorite-info p{font-size:13px;line-height:1.7}
+}
