@@ -279,3 +279,19 @@
 @media(max-width:900px){.main-column .section-heading h2{font-size:20px}}
 @media(max-width:720px){.main-column .section-heading h2{font-size:18px}.main-column .section-kicker{font-size:10px}}
 @media(max-width:480px){.main-column .section-heading h2{font-size:18px}}
+
+/* Fine tune section heading and favorite card type sizes */
+.main-column .section-heading h2{font-size:clamp(24px,2.4vw,32px)}
+.favorite-info h3{font-size:20px}
+.favorite-info p{font-size:15px}
+@media(max-width:900px){.main-column .section-heading h2{font-size:20px}}
+@media(max-width:720px){
+  .main-column .section-heading h2{font-size:18px}
+  .main-column .favorite-info h3{font-size:17px}
+  .main-column .favorite-info p{font-size:14px}
+}
+@media(max-width:480px){
+  .main-column .section-heading h2{font-size:17px}
+  .main-column .favorite-info h3{font-size:17px}
+  .main-column .favorite-info p{font-size:14px}
+}
