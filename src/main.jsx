@@ -142,7 +142,7 @@ function App() {
     <section className="about-section section-pad" id="about"><div className="page-width">
       <div className="section-heading"><div><span className="section-kicker">01　/　关于空间</span></div><p>技术、影像和生活，都可以慢慢记录。</p></div>
       <div className="about-grid">
-        <div className="portrait-card"><div className="portrait-avatar"><img src="/kairyqi-profile.png" alt="KairyQi 的个人照片" /></div></div>
+        <div className="portrait-card"><div className="portrait-avatar"><img src={`${import.meta.env.BASE_URL}kairyqi-profile.png`} alt="KairyQi 的个人照片" /></div></div>
         <div className="about-copy"><span className="mono-label">空间说明</span><h3>技术、影像与生活，<br /><span>慢慢记下来</span>。</h3><p>这里收录技术实践、喜欢的网站与账号、正在做的项目，也留给路上的风景和随时冒出的想法。主要写给自己，偶尔整理旧记录。</p><div className="contact-chips"><a href="mailto:kairyqi@gmail.com"><Icon name="mail" size={15}/> kairyqi@gmail.com</a><span><Icon name="pin" size={15}/> 随手记录 · 慢慢整理</span></div><a href="#experience" className="text-link">查看日志 <Icon name="arrow" size={15}/></a></div>
         <div className="about-stats"><div className="stat"><strong>AI × 软件</strong><small>开发与实践</small></div><div className="stat"><strong>影像</strong><small>短视频与旅拍</small></div><div className="stat status-stat"><span className="availability-dot"/><small>持续更新</small><strong>生活与随想</strong></div></div>
       </div>
