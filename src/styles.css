@@ -243,3 +243,13 @@
   .body-layout .heading-aside p{font-size:12px;line-height:1.75;text-align:left}
   .body-layout .heading-aside p strong{font-size:15px}
 }
+
+/* Main-column kicker now carries the former section headline */
+.main-column .section-kicker{font-family:Manrope,'Noto Sans SC','Microsoft YaHei',sans-serif;font-size:clamp(19px,1.8vw,27px);font-weight:800;letter-spacing:-.045em;line-height:1.45;color:#202638;margin-bottom:0}
+.main-column .heading-aside p strong{font:inherit;letter-spacing:inherit}
+@media(max-width:720px){
+  .main-column .section-kicker{font-size:18px;line-height:1.5}
+}
+@media(max-width:480px){
+  .main-column .section-kicker{font-size:16px}
+}
