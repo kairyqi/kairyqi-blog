@@ -306,3 +306,35 @@
   .main-column .favorite-info h3{font-size:19px}
   .main-column .favorite-info p{font-size:15px}
 }
+
+/* Enlarge typography across all homepage cards to match the favorites cards */
+.main-column .timeline-date{font-size:11px}
+.main-column .role-tag{font-size:10px}
+.main-column .timeline-content h3{font-size:20px;line-height:1.45}
+.main-column .timeline-desc{font-size:14px;line-height:1.8}
+.main-column .note-type{font-size:11px}
+.main-column .note-card h3{font-size:20px;line-height:1.5}
+.main-column .note-card p{font-size:14px;line-height:1.8}
+.main-column .note-foot{font-size:10px}
+.main-column .moment-date{font-size:11px}
+.main-column .moment-card h3{font-size:19px}
+.main-column .moment-card p{font-size:14px;line-height:1.8}
+.main-column .moment-tag{font-size:10px}
+.main-column .project-info h3{font-size:20px}
+.main-column .project-info p{font-size:14px;line-height:1.8}
+.main-column .archive-date,.main-column .archive-category{font-size:11px}
+@media(max-width:720px){
+  .main-column .timeline-date{font-size:10px}
+  .main-column .role-tag{font-size:10px}
+  .main-column .timeline-content h3{font-size:18px}
+  .main-column .timeline-desc{font-size:13px}
+  .main-column .note-type{font-size:10px}
+  .main-column .note-card h3{font-size:18px}
+  .main-column .note-card p{font-size:13px}
+  .main-column .note-foot{font-size:9px}
+  .main-column .moment-card h3{font-size:18px}
+  .main-column .moment-card p{font-size:13px}
+  .main-column .project-info h3{font-size:18px}
+  .main-column .project-info p{font-size:13px}
+  .main-column .archive-date,.main-column .archive-category{font-size:10px}
+}
