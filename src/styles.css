@@ -352,3 +352,6 @@
 
 .experience-section .section-heading h2{font-size:20px}
 @media(max-width:480px){.experience-section .section-heading h2{font-size:17px}}
+
+.main-column .section-heading h2{font-size:20px}
+@media(max-width:480px){.main-column .section-heading h2{font-size:17px}}
