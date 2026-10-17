@@ -295,3 +295,14 @@
   .main-column .favorite-info h3{font-size:17px}
   .main-column .favorite-info p{font-size:14px}
 }
+
+/* Latest requested section heading and favorite typography */
+.section-heading{align-items:unset}
+.main-column .section-heading h2{font-size:24px}
+.main-column .favorite-info h3{font-size:22px}
+.main-column .favorite-info p{font-size:16px;line-height:1.75}
+@media(max-width:720px){
+  .main-column .section-heading h2{font-size:24px}
+  .main-column .favorite-info h3{font-size:19px}
+  .main-column .favorite-info p{font-size:15px}
+}
