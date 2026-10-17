@@ -232,3 +232,14 @@
   .main-column .favorite-info h3{font-size:16px;margin:11px 0 6px}
   .main-column .favorite-info p{font-size:13px;line-height:1.7}
 }
+
+/* Combined section copy stays in the original right-side description position */
+.body-layout .section-heading>div:first-child>p{display:none}
+.body-layout .heading-aside p{margin:0 0 3px;color:#838998;font-size:14px;line-height:1.8;text-align:right}
+.body-layout .heading-aside p strong{color:#202638;font-size:17px;font-weight:750;letter-spacing:-.025em}
+.notes-section .heading-aside p{color:#aeb8cc}
+.notes-section .heading-aside p strong{color:#f4f6fb}
+@media(max-width:720px){
+  .body-layout .heading-aside p{font-size:12px;line-height:1.75;text-align:left}
+  .body-layout .heading-aside p strong{font-size:15px}
+}
