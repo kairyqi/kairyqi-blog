@@ -341,3 +341,5 @@
 
 /* Keep the fixed navigation above every page section */
 .site-header{z-index:10000}
+
+.site-header .wordmark{color:#f6f8ff}
