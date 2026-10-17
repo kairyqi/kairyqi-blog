@@ -261,3 +261,8 @@
   .main-column .section-kicker{font-size:10px;letter-spacing:.1em}
   .main-column .heading-aside p strong{font-size:13px}
 }
+
+/* Match the former section-heading h2 typography on the kicker title */
+.main-column .section-heading .section-kicker{display:block;font-family:inherit;font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-.065em;line-height:1.25;color:inherit;margin:0}
+@media(max-width:900px){.main-column .section-heading .section-kicker{font-size:20px}}
+@media(max-width:480px){.main-column .section-heading .section-kicker{font-size:18px}}
