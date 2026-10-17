@@ -343,3 +343,9 @@
 .site-header{z-index:10000}
 
 .site-header .wordmark{color:#f6f8ff}
+
+/* Full-width fixed header, aligned inner content, and profile offset below it */
+.site-header.page-width{width:100%;max-width:none;left:0;transform:none;margin:0;padding-inline:max(36px,calc((100% - 1700px)/2))}
+.profile-column{top:112px}
+@media(max-width:720px){.site-header.page-width{width:100%;padding-inline:19px}}
+@media(max-width:480px){.site-header.page-width{width:100%;padding-inline:15px}}
