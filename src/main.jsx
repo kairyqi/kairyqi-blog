@@ -122,13 +122,7 @@ function App() {
   if (view === 'list') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main page-width"><div className="section-kicker">内容归档　/　{sectionNames[pageSection] || '日志'}</div><h1>{sectionNames[pageSection] || '日志'}</h1><p className="archive-description">{pageSection === 'journal' ? '按时间整理空间里的技术笔记、收藏、项目与生活片段。' : '关于「' + (sectionNames[pageSection] || '日志') + '」的记录与整理。'}</p><div className="archive-list">{pageItems.length ? pageItems.map(item => <a className="archive-row" href={routeForDetail(item.id)} key={item.id}><span className="archive-date">{item.date}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span></span><span className="archive-row-arrow"><Icon name="arrow" size={17}/></span></a>) : <div className="empty-state">这里还没有记录，之后有内容时再慢慢补上。</div>}</div><nav className="pagination" aria-label="列表分页"><a className={pageNumber <= 1 ? 'page-disabled' : ''} href={routeForList(pageSection, Math.max(1, pageNumber - 1))}>上一页</a><span>第 {pageNumber} / {pageCount} 页</span><a className={pageNumber >= pageCount ? 'page-disabled' : ''} href={routeForList(pageSection, Math.min(pageCount, pageNumber + 1))}>下一页</a></nav></main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
   if (view === 'detail' && detailItem) { const detailIndex = logEntries.findIndex(item => item.id === detailItem.id); const newer = logEntries[detailIndex - 1]; const older = logEntries[detailIndex + 1]; return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={routeForList(detailItem.section)}>返回{sectionNames[detailItem.section]} <Icon name="arrow" size={15}/></a></header><main className="detail-main page-width"><div className="detail-cover"><span className="section-kicker">{detailItem.category}</span><span className="detail-cover-mark">{detailItem.section === 'moments' ? '记' : detailItem.section === 'favorites' ? '藏' : detailItem.section === 'projects' ? '项' : '札'}</span></div><article className="detail-article"><div className="detail-meta"><span>{detailItem.date}</span><span>·</span><span>{sectionNames[detailItem.section]}</span></div><h1>{detailItem.title}</h1><p className="detail-lead">{detailItem.note}</p><div className="detail-body">{detailItem.body.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div><div className="detail-tags"><span>{detailItem.category}</span><span>KairyQi 的空间</span></div></article><nav className="detail-pagination"><a href={newer ? routeForDetail(newer.id) : routeForList(detailItem.section)}><small>较新的记录</small><strong>{newer ? newer.title : '返回列表'}</strong></a><a href={older ? routeForDetail(older.id) : routeForList(detailItem.section)}><small>较早的记录</small><strong>{older ? older.title : '返回列表'}</strong></a></nav></main></div> }
   return <>
-    <section className="hero" id="home">
-      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src="https://videos.pexels.com/video-files/14209120/14209120-hd_1920_1080_30fps.mp4" type="video/mp4" />
-      </video>
-      <MotionField />
-      <div className="hero-glow" />
-      <header className="site-header page-width">
+    <header className="site-header page-width">
         <a className="wordmark" href="#home" onClick={closeMenu}><span className="wordmark-icon"><Icon name="spark" size={16} /></span> KairyQi<span className="wordmark-dot">.</span><small>个人空间</small></a>
         <button className="menu-toggle" aria-label="切换导航" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button>
         <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="主导航">
@@ -136,6 +130,12 @@ function App() {
           <a className="nav-contact" href="#contact" onClick={closeMenu}>联系方式 <Icon name="arrow" size={15} /></a>
         </nav>
       </header>
+    <section className="hero" id="home">
+      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
+        <source src="https://videos.pexels.com/video-files/14209120/14209120-hd_1920_1080_30fps.mp4" type="video/mp4" />
+      </video>
+      <MotionField />
+      <div className="hero-glow" />
       <div className="hero-content page-width">
         <div className="hero-copy">
           <div className="availability"><span className="availability-dot" /> 个人记录 · 持续更新</div>

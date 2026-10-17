@@ -338,3 +338,6 @@
   .main-column .project-info p{font-size:13px}
   .main-column .archive-date,.main-column .archive-category{font-size:10px}
 }
+
+/* Keep the fixed navigation above every page section */
+.site-header{z-index:10000}
