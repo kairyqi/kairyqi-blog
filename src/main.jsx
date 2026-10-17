@@ -69,6 +69,7 @@ function MotionField() {
 }
 
 const logEntries = [
+  { id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计', title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。', body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。'] },
   {
     id: 'personal-space-build', section: 'notes', date: '2026.10.17', category: '技术笔记 · 个人网站',
     title: '从一次个人空间搭建，整理我的设计与实现思路',
@@ -82,6 +83,10 @@ const logEntries = [
       '图片适合压缩后随站点发布；视频文件较大，不适合持续塞进 Git 历史，后续更适合放到视频平台或对象存储，再嵌入链接。整体经验是先让内容组织方式稳定，再逐步丰富视觉和媒体，不需要一开始就把所有功能做复杂。',
     ],
   },
+]
+
+const bookmarks = [
+  { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/' },
 ]
 
 function App() {
@@ -149,7 +154,7 @@ function App() {
 
     <section className="moments-section section-pad" id="moments"><div className="page-width"><div className="section-heading"><div><span className="section-kicker">04　/　生活随记</span><h2>生活里的灵感，<em>也值得记录。</em></h2></div><div className="heading-aside"><p>一段话、一张图、一次旅拍，或一条社交媒体动态。</p><a className="text-link" href="?view=list&amp;section=moments&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="moments-grid"><div className="empty-state">这里暂时空着，等下一段生活片段。</div></div></div></section>
 
-    <section className="favorites-section section-pad" id="favorites"><div className="page-width"><div className="section-heading"><div><span className="section-kicker">05　/　收藏夹</span><h2>遇见的内容，<em>先放在这里。</em></h2></div><div className="heading-aside"><p>网站、账号、文章与工具的链接备忘。</p><a className="text-link" href="?view=list&amp;section=favorites&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="favorites-grid"><div className="empty-state">收藏夹目前没有内容，之后遇到喜欢的网站或账号再放进来。</div></div></div></section>
+    <section className="favorites-section section-pad" id="favorites"><div className="page-width"><div className="section-heading"><div><span className="section-kicker">05　/　收藏夹</span><h2>遇见的内容，<em>先放在这里。</em></h2></div><div className="heading-aside"><p>网站、账号、文章与工具的链接备忘。</p><a className="text-link" href="?view=list&amp;section=favorites&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="favorites-grid">{bookmarks.map((item, index) => <a className="favorite-card" href={item.link} target="_blank" rel="noreferrer" key={item.title}><div className={`favorite-visual favorite-visual-${index + 1}`}><span className="favorite-symbol"><Icon name={item.icon} size={25}/></span><span className="favorite-open"><Icon name="external" size={15}/></span><span className="favorite-index">{String(index + 1).padStart(2, '0')}</span></div><div className="favorite-info"><div className="favorite-meta"><span>{item.type}</span><b>{item.label}</b></div><h3>{item.title}</h3><p>{item.note}</p></div></a>)}</div></div></section>
 
     <section className="projects-section section-pad" id="projects"><div className="page-width"><div className="section-heading"><div><span className="section-kicker">06　/　正在进行</span><h2>项目与尝试，<em>阶段记录。</em></h2></div><div className="heading-aside"><p>正在尝试的内容与阶段状态，也顺手留档。</p><a className="text-link" href="?view=list&amp;section=projects&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="project-grid"><div className="empty-state">还没有项目记录，等有正在进行的尝试时再补充。</div></div></div></section>
 
