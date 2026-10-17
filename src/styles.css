@@ -272,3 +272,10 @@
 .main-column .heading-aside p{font-size:14px;line-height:1.7}
 .main-column .heading-aside p strong{font:inherit;letter-spacing:inherit}
 @media(max-width:720px){.main-column .section-heading .section-kicker{font-size:10px}.main-column .heading-aside p{font-size:12px}}
+
+/* Restore the original section-heading hierarchy */
+.main-column .section-kicker{font:700 10px var(--mono);letter-spacing:.12em;line-height:normal;color:var(--blue-deep);margin-bottom:13px}
+.main-column .section-heading h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.065em;line-height:1.25;margin:0;font-weight:800}
+@media(max-width:900px){.main-column .section-heading h2{font-size:20px}}
+@media(max-width:720px){.main-column .section-heading h2{font-size:18px}.main-column .section-kicker{font-size:10px}}
+@media(max-width:480px){.main-column .section-heading h2{font-size:18px}}
