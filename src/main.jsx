@@ -114,6 +114,19 @@ const logEntries = [
       '后续更新指引：网站仓库为 https://github.com/kairyqi/kairyqi-blog，使用 React 与 Vite，发布到 GitHub Pages（https://kairyqi.github.io/kairyqi-blog/）。新增内容时先确定板块，并整理标题、日期、分类、摘要、正文及相关链接或媒体；保持桌面与手机布局、列表/详情/搜索和 Pages 子路径资源引用正常。修改后先完成构建检查，再提交并推送 main 发布，只提交本次相关内容，不带入临时附件或无关文件；最后说明改动和发布结果。',
     ],
   },
+  {
+    id: 'vibe-coding-design-tools', section: 'projects', date: '2026.10.18', category: '待办项目 · Vibe Coding',
+    title: '研究 MotionSites、JiroBuild 与国产 Vibe Coding 平替',
+    note: '从设计灵感库与提示词入手，比较网站生成工具，整理适合升级个人空间的视觉与交互方案。',
+    tags: ['AI工具', '提示词', '网页设计', '前端开发', '实用网站', '待研究'],
+    body: [
+      '灵感来源：抖音账号「宇至｜Vibe创业」分享的视频，标题提到 MotionSites 与 JiroBuild 的国产平替。当前先把这件事列入待办，后续再根据视频完整内容核实具体推荐的国产工具，不把尚未确认的产品名称或能力当作结论。',
+      '初步认识：MotionSites 与 JiroBuild 更偏向网站设计灵感、页面模板或提示词素材，帮助开发者给 AI 编程工具提供更明确的视觉参考；它们不应简单等同于可以独立完成所有开发、测试与部署的全自动建站平台。',
+      '计划研究：1）回看视频并确认国产平替的名称、官网、功能与收费；2）对比设计质量、中文适配、页面生成能力、动效实现、代码导出和部署方式；3）挑选适合个人主页的设计参考，重点观察首屏、内容卡片、滚动动画和移动端布局；4）评估能否融入现有 React + Vite + GitHub Pages 项目。',
+      '实施原则：先做小范围视觉实验，不推倒重建现有网站；保留已有记录、标签、搜索与详情页结构。改动后检查手机适配、加载性能、可访问性、资源路径和 GitHub Pages 构建结果。',
+      '完成标准：形成一份工具对比与成本记录，选定值得尝试的方案，并完成一个可在现有个人空间中验证的设计或交互改进。'
+    ],
+  },
 ]
 
 const bookmarks = [
@@ -207,7 +220,7 @@ function App() {
 
     <section className="favorites-section section-pad" id="favorites"><div className="page-width"><div className="section-heading"><div><h2><em>05　/</em>　收藏夹</h2></div><div className="heading-aside"><p>遇见的内容，先放在这里。</p><a className="text-link" href="?view=list&amp;section=favorites&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="favorites-grid">{bookmarks.map(item => <a className={`favorite-card${item.image ? ' has-image' : ''}`} href={item.link} target="_blank" rel="noreferrer" key={item.title}>{item.image && <div className="favorite-visual"><img src={item.image} alt=""/><span className="favorite-open"><Icon name="external" size={15}/></span></div>}<div className="favorite-info"><div className="favorite-meta"><span>{item.type}</span><b>{item.label}</b></div><h3>{item.title}</h3><p>{item.note}</p></div></a>)}</div></div></section>
 
-    <section className="projects-section section-pad" id="projects"><div className="page-width"><div className="section-heading"><div><h2><em>06　/</em>　正在进行</h2></div><div className="heading-aside"><p>项目与尝试，阶段记录。</p><a className="text-link" href="?view=list&amp;section=projects&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="project-grid"><div className="empty-state">还没有项目记录，等有正在进行的尝试时再补充。</div></div></div></section>
+    <section className="projects-section section-pad" id="projects"><div className="page-width"><div className="section-heading"><div><h2><em>06　/</em>　正在进行</h2></div><div className="heading-aside"><p>项目与尝试，阶段记录。</p><a className="text-link" href="?view=list&amp;section=projects&amp;page=1">更多 <Icon name="arrow" size={15}/></a></div></div><div className="project-grid">{logEntries.filter(entry => entry.section === 'projects').length ? logEntries.filter(entry => entry.section === 'projects').map((entry, index) => <a className="project-card" href={routeForDetail(entry.id)} key={entry.id}><span className="note-type">{entry.category}</span><div className="project-card-copy"><h3>{entry.title}</h3><p>{entry.note}</p></div><div className="project-card-foot"><span>{entry.date}　/　待办研究</span><Icon name="arrow" size={17}/></div></a>) : <div className="empty-state">还没有项目记录，等有正在进行的尝试时再补充。</div>}</div></div></section>
 
     <section className="home-tags-section section-pad" id="tags"><div className="page-width"><div className="section-heading"><div><h2><em>07　/</em>　热门标签</h2></div><div className="heading-aside"><p>用主题把不同板块的记录串联起来。</p><a className="text-link" href="?view=tags">浏览全部标签 <Icon name="arrow" size={15}/></a></div></div><div className="home-tag-cloud">{tagCounts.slice(0, 10).map(item => <a className="home-tag-chip" href={routeForTag(item.tag)} key={item.tag}><span>#{item.tag}</span><small>{item.count}</small></a>)}</div></div></section>
 
