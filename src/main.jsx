@@ -131,7 +131,7 @@ const logEntries = [
 
 const bookmarks = [
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/' },
-  { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/' },
+  { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/', image: 'https://image.thum.io/get/width/1200/crop/800/https://motionsites.org/' },
 ]
 
 function App() {
