@@ -69,12 +69,38 @@ function MotionField() {
   return <canvas className="motion-field" ref={canvasRef} aria-hidden="true" />
 }
 
+const tagGroups = [
+  { name: 'AI 与智能工具', tags: ['AI工具', 'AI绘画', 'AI视频', '提示词', '大模型', '自动化'] },
+  { name: '技术与开发', tags: ['React', '前端开发', '服务器', '网络工具', '部署运维', '教程'] },
+  { name: '设计与影像', tags: ['网页设计', '视觉灵感', '摄影', '短视频', '剪辑', '运镜'] },
+  { name: '资源与收藏', tags: ['实用网站', '效率工具', '优质账号', '素材资源', '教程合集', '待研究'] },
+  { name: '生活与灵感', tags: ['生活随记', '旅行', '城市风景', '个人想法', '灵感记录'] },
+]
+const allTags = tagGroups.flatMap(group => group.tags)
+const recommendTags = text => {
+  const value = String(text || '').toLocaleLowerCase()
+  const rules = [
+    ['AI工具', /ai|人工智能|大模型|chatgpt|模型/i], ['AI绘画', /绘画|文生图|midjourney|stable diffusion/i],
+    ['AI视频', /ai视频|视频生成|图生视频/i], ['提示词', /提示词|prompt/i],
+    ['React', /react/i], ['前端开发', /前端|javascript|typescript|vite|网页开发/i],
+    ['服务器', /服务器|vps|linux/i], ['网络工具', /vpn|wireguard|网络工具|代理/i],
+    ['部署运维', /部署|运维|github pages|上线/i], ['网页设计', /网页设计|页面布局|ui设计|网站设计/i],
+    ['视觉灵感', /灵感|视觉|版式|pinterest/i], ['摄影', /摄影|照片|拍摄/i],
+    ['短视频', /短视频|视频/i], ['剪辑', /剪辑|后期/i], ['运镜', /运镜|镜头/i],
+    ['实用网站', /网站|网址|在线工具/i], ['效率工具', /效率|工具/i], ['教程', /教程|步骤|指南/i],
+    ['生活随记', /生活|随记|日常/i], ['旅行', /旅行|旅游|出行/i], ['城市风景', /城市|风景|湖|街景/i],
+    ['个人想法', /想法|思考|观点/i], ['灵感记录', /灵感|记录/i],
+  ]
+  return rules.filter(([, pattern]) => pattern.test(value)).map(([tag]) => tag).filter(tag => allTags.includes(tag)).slice(0, 6)
+}
+
 const logEntries = [
-  { id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计', title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。', body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。'] },
+  { id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计', title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。'] },
   {
     id: 'personal-space-build', section: 'notes', date: '2026.10.17', category: '技术笔记 · 个人网站',
     title: '从一次个人空间搭建，整理我的设计与实现思路',
     note: '记录从内容定位、页面结构到 React、Vite 与 GitHub Pages 发布的完整过程。',
+    tags: ['React', '前端开发', '网页设计', '部署运维', '教程'],
     body: [
       '这个空间最初从个人 Blog 的样式讨论开始。比起把页面做成简历或作品集，我更希望它像一个长期使用的个人记录本：技术笔记、收藏、项目、生活随记都能放进来，主要写给自己，也让偶然访问的人看得明白。',
       '视觉上经历了几轮调整。最初尝试了全屏 Hero 和较大的展示区块，后来发现它更像传统宣传页，不适合频繁阅读和更新。最终回到相对熟悉的头部导航与左右分栏：侧栏放个人信息，主栏承载日志、技术笔记、收藏、项目和生活随记。保留深色科技感的首页、微弱动效与蓝色强调，但让内容成为页面主体。',
@@ -90,7 +116,7 @@ const logEntries = [
 ]
 
 const bookmarks = [
-  { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/' },
+  { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/' },
 ]
 
 function App() {
@@ -113,13 +139,17 @@ function App() {
     })),
   ]
   const searchResults = searchQuery
-    ? searchableItems.filter(item => [item.title, item.category, item.note, ...item.body].join(' ').toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()))
+    ? searchableItems.filter(item => [item.title, item.category, item.note, ...(item.tags || []), ...item.body].join(' ').toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()))
     : []
   const pageCount = Math.max(1, Math.ceil(sectionItems.length / pageSize))
   const pageItems = sectionItems.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
   const detailItem = view === 'detail' ? logEntries.find(item => item.id === params.get('id')) : null
   const routeForList = (section, page = 1) => '?view=list&section=' + section + '&page=' + page
   const routeForDetail = id => '?view=detail&id=' + id
+  const routeForTag = tag => '?view=tags&tag=' + encodeURIComponent(tag)
+  const selectedTag = params.get('tag') || ''
+  const tagEntries = selectedTag ? searchableItems.filter(item => (item.tags || []).includes(selectedTag)) : []
+  const tagCounts = allTags.map(tag => ({ tag, count: searchableItems.filter(item => (item.tags || []).includes(tag)).length })).filter(item => item.count > 0).sort((a, b) => b.count - a.count || allTags.indexOf(a.tag) - allTags.indexOf(b.tag))
   const homeUrl = import.meta.env.BASE_URL
   if (view === 'search') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main search-main page-width"><div className="section-kicker">空间索引　/　全站搜索</div><h1>搜索记录</h1><p className="archive-description">按标题或正文查找技术笔记、收藏与生活记录。</p><form className="site-search-form" action={homeUrl} method="get"><input type="hidden" name="view" value="search"/><label className="sr-only" htmlFor="site-search">搜索标题和正文</label><input id="site-search" type="search" name="q" defaultValue={searchQuery} placeholder="输入关键词，例如：个人空间" autoFocus/><button type="submit"><Icon name="search" size={17}/> 搜索</button></form><div className="search-results-heading">{searchQuery ? `“${searchQuery}” 的搜索结果 · ${searchResults.length} 条` : '输入关键词开始搜索'}</div><div className="archive-list search-results">{searchQuery ? searchResults.length ? searchResults.map(item => <a className="archive-row" href={item.externalLink || routeForDetail(item.id)} target={item.externalLink ? '_blank' : undefined} rel={item.externalLink ? 'noreferrer' : undefined} key={`${item.section}-${item.id}`}><span className="archive-date">{item.date || '收藏夹'}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span></span><span className="archive-row-arrow"><Icon name={item.externalLink ? 'external' : 'arrow'} size={17}/></span></a>) : <div className="empty-state">没有找到匹配的记录，试试其他关键词。</div> : <div className="empty-state">搜索会同时匹配记录标题、分类、摘要和正文。</div>}</div></main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
   if (view === 'list') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main page-width"><div className="section-kicker">内容归档　/　{sectionNames[pageSection] || '日志'}</div><h1>{sectionNames[pageSection] || '日志'}</h1><p className="archive-description">{pageSection === 'journal' ? '按时间整理空间里的技术笔记、收藏、项目与生活片段。' : '关于「' + (sectionNames[pageSection] || '日志') + '」的记录与整理。'}</p><div className="archive-list">{pageItems.length ? pageItems.map(item => <a className="archive-row" href={routeForDetail(item.id)} key={item.id}><span className="archive-date">{item.date}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span></span><span className="archive-row-arrow"><Icon name="arrow" size={17}/></span></a>) : <div className="empty-state">这里还没有记录，之后有内容时再慢慢补上。</div>}</div><nav className="pagination" aria-label="列表分页"><a className={pageNumber <= 1 ? 'page-disabled' : ''} href={routeForList(pageSection, Math.max(1, pageNumber - 1))}>上一页</a><span>第 {pageNumber} / {pageCount} 页</span><a className={pageNumber >= pageCount ? 'page-disabled' : ''} href={routeForList(pageSection, Math.min(pageCount, pageNumber + 1))}>下一页</a></nav></main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
