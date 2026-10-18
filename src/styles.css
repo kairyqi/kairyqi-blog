@@ -358,3 +358,29 @@
 
 html{scroll-padding-top:108px}
 @media(max-width:720px){html{scroll-padding-top:84px}}
+
+
+/* Categorized tag system */
+.home-tags-section{background:#fff;border:1px solid #e4e7ee;border-radius:5px}
+.home-tag-cloud,.tag-cloud{display:flex;flex-wrap:wrap;gap:9px}
+.home-tag-chip,.tag-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #e2e7f1;border-radius:4px;background:#f8f9fc;color:#46516a;font-size:12px;transition:background .18s,border-color .18s,color .18s}
+.home-tag-chip:hover,.tag-chip:hover,.tag-chip.is-active{background:#edf1ff;border-color:#b9c7fb;color:#405dc6}
+.home-tag-chip small,.tag-chip span{font:10px var(--mono);color:#8791a6}
+.tags-main{max-width:980px}
+.tag-groups{display:grid;gap:22px;margin-top:32px}
+.tag-group{padding:20px 0;border-top:1px solid #dfe4ed}
+.tag-group h2{margin:0 0 14px;font-size:16px;letter-spacing:-.025em}
+.tag-cloud{gap:8px}
+.tag-chip{padding:9px 11px}
+.inline-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:3px}
+.inline-tags span{padding:4px 7px;border-radius:3px;background:#edf1ff;color:#5269bb;font-size:10px}
+.detail-tags a{padding:7px 10px;background:#e9edf6;border-radius:3px;color:#5269bb;font-size:10px}
+.detail-tags a:hover{background:#dce5ff}
+@media(max-width:720px){
+  .home-tags-section{padding:17px!important}
+  .home-tag-cloud,.tag-cloud{gap:7px}
+  .home-tag-chip,.tag-chip{padding:8px 9px;font-size:11px}
+  .tag-groups{gap:14px;margin-top:24px}
+  .tag-group{padding:15px 0}
+  .tag-group h2{font-size:14px}
+}
