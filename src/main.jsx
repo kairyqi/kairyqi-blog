@@ -10,6 +10,11 @@ const Icon = ({ name, size = 18 }) => {
     arrow: <><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></>,
     external: <><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></>,
     search: <><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.5 4.5"/></>,
+    home: <><path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/></>,
+    notes: <><path d="M5 3h14v18H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></>,
+    journal: <><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4m8-4v4M4 9h16M8 13h3m-3 4h6"/></>,
+    projects: <><path d="M4 5h16v14H4z"/><path d="m8 12 2.5 2.5L16 9"/></>,
+    person: <><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></>,
     code: <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></>,
     play: <><path d="m9 6 10 6-10 6z"/></>,
     mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>,
@@ -216,10 +221,10 @@ function App() {
   return <>
     <header className="site-header page-width">
         <a className="wordmark" href="#home" onClick={closeMenu}><span className="wordmark-icon">KQ</span><span className="wordmark-lockup"><strong>KairyQi 的空间</strong><small>// tech notes &amp; logs</small></span></a>
-        <button className="menu-toggle" aria-label="切换导航" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span /><span /></button>
+        <a className="header-search" href="?view=search" aria-label="搜索空间"><Icon name="search" size={16}/><span>快速索引...</span><kbd>⌘K</kbd></a>
+        <button className="menu-toggle" aria-label="切换版块导航" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}><span/><span/><b>版块</b></button>
         <nav className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="主导航">
           <a href="#about" onClick={closeMenu}>关于空间</a><a href="#experience" onClick={closeMenu}>日志</a><a href="#notes" onClick={closeMenu}>技术笔记</a><a href="#moments" onClick={closeMenu}>生活随记</a><a href="#favorites" onClick={closeMenu}>收藏夹</a><a href="#projects" onClick={closeMenu}>项目</a><a href="#tags" onClick={closeMenu}>标签</a>
-          <a className="nav-search" href="?view=search" onClick={closeMenu}><Icon name="search" size={15}/><span>快速索引...</span><kbd>⌘K</kbd></a>
           <span className="header-status"><i/> ONLINE <b>⌖</b></span>
         </nav>
       </header>
@@ -228,7 +233,9 @@ function App() {
     <section className="about-section section-pad" id="about"><div className="page-width">
       <div className="about-grid">
         <div className="portrait-card"><div className="portrait-avatar"><img src={profileAvatar} alt="KairyQi 的个人照片" /></div></div>
-        <div className="about-copy"><span className="mono-label"><i className="availability-dot"/> 空间主理人</span><h3>KairyQi</h3><span className="profile-title">// Developer, Creator &amp; Lifelong Explorer</span><p>记录技术探索、AI 实践、灵感收藏与日常生活碎片。保持纯粹与热爱，让每一个灵光闪烁的时刻都有迹可循。</p><div className="current-focus"><span>CURRENT FOCUS</span><small>正在探索</small><strong>LLM Agent &amp; Web 交互范式</strong></div><div className="contact-chips"><button type="button" onClick={copyEmail} aria-label="复制邮箱"><Icon name="mail" size={15}/><span>kairyqi@gmail.com</span><small>{emailCopied ? '已复制邮箱!' : '点击复制邮箱'}</small></button><a href="mailto:kairyqi@gmail.com">来信 <Icon name="arrow" size={14}/></a></div></div>
+        <div className="about-copy"><span className="mono-label"><i className="availability-dot"/> 空间主理人</span><h3>KairyQi</h3><span className="profile-title">// Developer, Creator &amp; Lifelong Explorer</span><p>记录技术探索、AI 实践、灵感收藏与日常生活碎片。保持纯粹与热爱，让每一个灵光闪烁的时刻都有迹可循。</p></div>
+        <div className="current-focus"><span>CURRENT FOCUS</span><small>正在探索</small><strong>LLM Agent &amp; Web 交互范式</strong></div>
+        <div className="contact-chips"><button type="button" onClick={copyEmail} aria-label="复制邮箱"><Icon name="mail" size={15}/><span>kairyqi@gmail.com</span><small>{emailCopied ? '已复制邮箱!' : '点击复制邮箱'}</small></button><a href="mailto:kairyqi@gmail.com">来信 <Icon name="arrow" size={14}/></a></div>
       </div>
     </div></section>
     <nav className="profile-index" aria-label="空间内容索引">
@@ -260,6 +267,7 @@ function App() {
 
     </div></div>
     <section className="contact-section" id="contact"><div className="page-width contact-inner"><div className="closing-note"><span>terminal</span><strong>保持记录，观察日常。</strong><small>由 KairyQi 整理编写 · 持续演进中 · 用代码构建世界，用文字与光影捕捉真实</small></div><div className="closing-links"><a href="mailto:kairyqi@gmail.com"><Icon name="mail" size={14}/> kairyqi@gmail.com</a><a href="https://github.com/kairyqi" target="_blank" rel="noreferrer"><Icon name="github" size={14}/> GitHub</a></div><footer className="site-footer"><a className="wordmark" href="#home"><span className="wordmark-icon">KQ</span> KairyQi 的空间</a><span>© 2026 · KairyQi · 个人记录</span><a href="#home">回到顶部 ↑</a></footer></div></section>
+    <nav className="mobile-dock" aria-label="移动端快捷导航"><a href="#home"><Icon name="home" size={18}/><span>首页</span></a><a href="#notes"><Icon name="notes" size={18}/><span>笔记</span></a><a href="#experience"><Icon name="journal" size={18}/><span>日志</span></a><a href="#projects"><Icon name="projects" size={18}/><span>项目</span></a><a href="#about"><Icon name="person" size={18}/><span>关于</span></a></nav>
   </>
 }
 
