@@ -15,6 +15,7 @@ const Icon = ({ name, size = 18 }) => {
     journal: <><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4m8-4v4M4 9h16M8 13h3m-3 4h6"/></>,
     projects: <><path d="M4 5h16v14H4z"/><path d="m8 12 2.5 2.5L16 9"/></>,
     person: <><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></>,
+    copy: <><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></>,
     code: <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M14 4l-4 16"/></>,
     play: <><path d="m9 6 10 6-10 6z"/></>,
     mail: <><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>,
@@ -233,9 +234,10 @@ function App() {
     <section className="about-section section-pad" id="about"><div className="page-width">
       <div className="about-grid">
         <div className="portrait-card"><div className="portrait-avatar"><img src={profileAvatar} alt="KairyQi 的个人照片" /></div></div>
-        <div className="about-copy"><span className="mono-label"><i className="availability-dot"/> 空间主理人</span><h3>KairyQi</h3><span className="profile-title">// Developer, Creator &amp; Lifelong Explorer</span><p>记录技术探索、AI 实践、灵感收藏与日常生活碎片。保持纯粹与热爱，让每一个灵光闪烁的时刻都有迹可循。</p></div>
-        <div className="current-focus"><span>CURRENT FOCUS</span><small>正在探索</small><strong>LLM Agent &amp; Web 交互范式</strong></div>
-        <div className="contact-chips"><button type="button" onClick={copyEmail} aria-label="复制邮箱"><Icon name="mail" size={15}/><span>kairyqi@gmail.com</span><small>{emailCopied ? '已复制邮箱!' : '点击复制邮箱'}</small></button><a href="mailto:kairyqi@gmail.com">来信 <Icon name="arrow" size={14}/></a></div>
+        <div className="about-copy"><div className="profile-name-row"><h3>KairyQi</h3><span className="mono-label"><i className="availability-dot"/> 空间主理人</span></div><span className="profile-title">// Developer, Creator &amp; Lifelong Explorer</span></div>
+        <p className="about-description">记录技术探索、AI 实践、灵感收藏与日常生活碎片。保持纯粹与热爱，让每一个灵光闪烁的时刻都有迹可循。</p>
+        <div className="current-focus"><span><Icon name="spark" size={13}/> CURRENT FOCUS</span><strong><small>正在探索：</small> LLM Agent &amp; Web 交互范式</strong></div>
+        <div className="contact-chips"><button type="button" onClick={copyEmail} aria-label="复制邮箱"><Icon name="mail" size={15}/><span>kairyqi@gmail.com</span><small>{emailCopied ? '已复制!' : <Icon name="copy" size={13}/>}</small></button><a href="mailto:kairyqi@gmail.com">来信 <Icon name="arrow" size={14}/></a></div>
       </div>
     </div></section>
     <nav className="profile-index" aria-label="空间内容索引">
