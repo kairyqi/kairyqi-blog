@@ -79,7 +79,7 @@ function MotionField() {
 
 const tagGroups = [
   { name: 'AI 与智能工具', tags: ['AI工具', 'AI绘画', 'AI视频', '提示词', '大模型', '自动化'] },
-  { name: '技术与开发', tags: ['React', '前端开发', '服务器', '网络工具', '部署运维', '教程'] },
+  { name: '技术与开发', tags: ['React', '前端开发', '移动端适配', '服务器', '网络工具', '部署运维', '教程'] },
   { name: '设计与影像', tags: ['网页设计', '视觉灵感', '摄影', '短视频', '剪辑', '运镜'] },
   { name: '资源与收藏', tags: ['实用网站', '效率工具', '优质账号', '素材资源', '教程合集', '待研究'] },
   { name: '生活与灵感', tags: ['生活随记', '旅行', '城市风景', '个人想法', '灵感记录'] },
@@ -126,6 +126,17 @@ const logEntries = [
     ],
   },
   {
+    id: 'stitch-bookmark', section: 'favorites', date: '2026.10.19', category: '收藏夹 · AI 设计工具',
+    title: 'Google Stitch',
+    note: '用于生成和探索网站界面设计，也作为个人空间桌面端与移动端改版的参考。',
+    tags: ['AI工具', '网页设计', '视觉灵感', '前端开发'],
+    externalLink: 'https://stitch.withgoogle.com/projects/11189735975645787200',
+    body: [
+      '收藏 Google Stitch 项目，记录这次个人空间 UI 改版所使用的设计参考。',
+      '后续遇到界面设计任务时，可以先用 Stitch 明确桌面与移动端结构，再按现有内容和数据把设计落到代码中。'
+    ],
+  },
+  {
     id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计',
     title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。',
     tags: ['视觉灵感', '网页设计', '实用网站'],
@@ -136,7 +147,7 @@ const logEntries = [
     id: 'personal-space-build', section: 'notes', date: '2026.10.17', category: '技术笔记 · 个人网站',
     title: '从一次个人空间搭建，整理我的设计与实现思路',
     note: '记录从内容定位、页面结构到 React、Vite 与 GitHub Pages 发布的完整过程。',
-    tags: ['React', '前端开发', '网页设计', '部署运维', '教程'],
+    tags: ['React', '前端开发', '网页设计', '部署运维', '教程', 'AI工具', '移动端适配'],
     body: [
       '这个空间最初从个人 Blog 的样式讨论开始。比起把页面做成简历或作品集，我更希望它像一个长期使用的个人记录本：技术笔记、收藏、项目、生活随记都能放进来，主要写给自己，也让偶然访问的人看得明白。',
       '视觉上经历了几轮调整。最初尝试了全屏 Hero 和较大的展示区块，后来发现它更像传统宣传页，不适合频繁阅读和更新。最终回到相对熟悉的头部导航与左右分栏：侧栏放个人信息，主栏承载日志、技术笔记、收藏、项目和生活随记。保留深色科技感的首页、微弱动效与蓝色强调，但让内容成为页面主体。',
@@ -148,6 +159,7 @@ const logEntries = [
       '导航固定在视口顶部并铺满页面宽度，内部内容仍与约 1700px 的版心对齐。为避免滚动时被 Hero 或卡片层级遮挡，导航移到 Hero 外并提高层级；头像侧栏的 sticky 顶部间距调整到 112px，给固定导航留出空间。导航移出 Hero 后，wordmark 也需要显式设为浅色，避免继承页面默认的深色文字。',
       '这次新增标签系统时也记录了一次 GitHub 授权排障：最初 ChatGPT 中的 GitHub 连接可以读取仓库，但创建分支和写入文件返回 403 Resource not accessible by integration。GitHub Settings 的 Applications 页面里，Authorized GitHub Apps 能看到 ChatGPT Codex Connector，但 Installed GitHub Apps 为空；这两个入口不是一回事。随后重新打开 ChatGPT Codex Connector 的 Install & Authorize 页面，选择 All repositories，并确认授权页列出的 actions、code、issues、pull requests 与 workflows 读写权限后点击 Install & Authorize，页面随即跳回 ChatGPT。之后才能成功创建分支、提交修改、创建并合并 PR。排障时应区分 ChatGPT 内部的操作许可与 GitHub 端实际授予集成的权限；遇到 403 时检查连接对应的授权和仓库范围，不要误以为仓库本身没有写入权限。最终 GitHub Actions 的 Build website 和 Publish website 均成功，标签系统已发布到 GitHub Pages。',
       '关于空间头像加载排障（2026-10-19）：将成熟版赛博风方形头像加入仓库根目录 `kairyqi-profile.jpg`，并在关于空间中通过 `${import.meta.env.BASE_URL}kairyqi-profile.jpg` 引用。首次更新后，GitHub Actions 的构建与发布均显示成功，但用户实际打开网站时头像仍未加载，说明“部署流程成功”并不等于资源在页面上一定能正确显示。复查代码后，将图片引用改为 `import profileAvatar from "../kairyqi-profile.jpg"`，由 Vite 在构建时处理静态资源并生成对应 URL；修改合并后，用户确认网站图片已正常更新。经验：遇到图片加载失败，不能只看 Actions 成功状态；应同时核对资源是否进入构建产物、引用路径是否适配 GitHub Pages 子路径，并以线上实际页面结果验证。',
+      'Stitch 设计迭代记录（2026-10-19）：参考 Google Stitch 项目 Personal Tech Sanctuary Redesign（https://stitch.withgoogle.com/projects/11189735975645787200），先对照画板里的桌面端与移动端结构，再逐项映射到已有 React 页面。视觉上采用深色数字档案风格，以青蓝、靛紫和薄荷色作为强调色，个人信息、导航和各内容区使用一致的边框、间距与字体层级；内容仍读取站点真实数据，不照搬画板里的示例文章、项目进度或虚构计数。桌面端保留左侧主理人信息与右侧内容流；移动端则取消固定侧栏和左右分栏，让主理人模块、日志、笔记、随记、收藏、项目和标签按单列顺序排列。主理人卡按移动参考稿拆成头像/姓名身份行、整行简介、当前关注条和邮箱操作；顶栏收紧并保留搜索与版块菜单，底部增加快捷导航。改版过程采用“看设计稿—实现—本地预览—对照截图修正”的循环：先有一次移动端仍沿用桌面侧栏/并排结构，复查层叠的媒体查询后显式覆盖窄屏网格和 sticky 定位，再按用户提供的卡片截图细调头像形状、文字顺序与操作按钮。经验：移动端需要独立按设计稿实现信息层级，不能只靠缩窄桌面版；CSS 断点出现多次覆盖时，要检查最终生效规则，并以手机视口实际预览确认布局。',
       '后续更新指引：网站仓库为 https://github.com/kairyqi/kairyqi-blog，使用 React 与 Vite，发布到 GitHub Pages（https://kairyqi.github.io/kairyqi-blog/）。新增内容时先确定板块，并整理标题、日期、分类、摘要、正文及相关链接或媒体；保持桌面与手机布局、列表/详情/搜索和 Pages 子路径资源引用正常。修改后先完成构建检查，再提交并推送 main 发布，只提交本次相关内容，不带入临时附件或无关文件；最后说明改动和发布结果。',
     ],
   },
@@ -169,6 +181,7 @@ const logEntries = [
 const bookmarks = [
   { category: '网络工具', type: 'VPN · 代理服务', title: 'Bigmeok', note: '目前正在使用的 VPN / 代理服务入口，方便之后快速访问。', tags: ['网络工具', '效率工具', '实用网站'], icon: 'link', label: '网络工具', link: 'https://pub.bigmeok.me/', image: 'https://image.thum.io/get/width/1200/crop/800/https://pub.bigmeok.me/' },
   { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/', image: 'https://image.thum.io/get/width/1200/crop/800/https://motionsites.org/' },
+  { category: 'AI 设计工具', type: '界面设计', title: 'Google Stitch', note: '用于生成和探索网站界面设计，也作为个人空间桌面端与移动端改版的参考。', tags: ['AI工具', '网页设计', '视觉灵感', '前端开发'], icon: 'spark', label: 'AI 设计', link: 'https://stitch.withgoogle.com/projects/11189735975645787200' },
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
 ]
 
