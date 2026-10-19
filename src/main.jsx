@@ -148,6 +148,7 @@ const logEntries = [
     title: '从一次个人空间搭建，整理我的设计与实现思路',
     note: '记录从内容定位、页面结构到 React、Vite 与 GitHub Pages 发布的完整过程。',
     tags: ['React', '前端开发', '网页设计', '部署运维', '教程', 'AI工具', '移动端适配'],
+    outline: ['记录空间的定位', '从 Hero 回到内容布局', '首页、列表与详情结构', 'React + Vite 数据维护', 'GitHub Pages 发布', '图片与视频资源', '版块层级与字号', '固定导航与层级', 'GitHub 集成授权排障', '头像资源加载排障', 'Stitch 桌面与移动设计迭代', '后续协作更新指引', '列表页与详情页的 Stitch 迭代'],
     body: [
       '这个空间最初从个人 Blog 的样式讨论开始。比起把页面做成简历或作品集，我更希望它像一个长期使用的个人记录本：技术笔记、收藏、项目、生活随记都能放进来，主要写给自己，也让偶然访问的人看得明白。',
       '视觉上经历了几轮调整。最初尝试了全屏 Hero 和较大的展示区块，后来发现它更像传统宣传页，不适合频繁阅读和更新。最终回到相对熟悉的头部导航与左右分栏：侧栏放个人信息，主栏承载日志、技术笔记、收藏、项目和生活随记。保留深色科技感的首页、微弱动效与蓝色强调，但让内容成为页面主体。',
@@ -161,6 +162,7 @@ const logEntries = [
       '关于空间头像加载排障（2026-10-19）：将成熟版赛博风方形头像加入仓库根目录 `kairyqi-profile.jpg`，并在关于空间中通过 `${import.meta.env.BASE_URL}kairyqi-profile.jpg` 引用。首次更新后，GitHub Actions 的构建与发布均显示成功，但用户实际打开网站时头像仍未加载，说明“部署流程成功”并不等于资源在页面上一定能正确显示。复查代码后，将图片引用改为 `import profileAvatar from "../kairyqi-profile.jpg"`，由 Vite 在构建时处理静态资源并生成对应 URL；修改合并后，用户确认网站图片已正常更新。经验：遇到图片加载失败，不能只看 Actions 成功状态；应同时核对资源是否进入构建产物、引用路径是否适配 GitHub Pages 子路径，并以线上实际页面结果验证。',
       'Stitch 设计迭代记录（2026-10-19）：参考 Google Stitch 项目 Personal Tech Sanctuary Redesign（https://stitch.withgoogle.com/projects/11189735975645787200），先对照画板里的桌面端与移动端结构，再逐项映射到已有 React 页面。视觉上采用深色数字档案风格，以青蓝、靛紫和薄荷色作为强调色，个人信息、导航和各内容区使用一致的边框、间距与字体层级；内容仍读取站点真实数据，不照搬画板里的示例文章、项目进度或虚构计数。桌面端保留左侧主理人信息与右侧内容流；移动端则取消固定侧栏和左右分栏，让主理人模块、日志、笔记、随记、收藏、项目和标签按单列顺序排列。主理人卡按移动参考稿拆成头像/姓名身份行、整行简介、当前关注条和邮箱操作；顶栏收紧并保留搜索与版块菜单，底部增加快捷导航。改版过程采用“看设计稿—实现—本地预览—对照截图修正”的循环：先有一次移动端仍沿用桌面侧栏/并排结构，复查层叠的媒体查询后显式覆盖窄屏网格和 sticky 定位，再按用户提供的卡片截图细调头像形状、文字顺序与操作按钮。经验：移动端需要独立按设计稿实现信息层级，不能只靠缩窄桌面版；CSS 断点出现多次覆盖时，要检查最终生效规则，并以手机视口实际预览确认布局。',
       '后续更新指引：网站仓库为 https://github.com/kairyqi/kairyqi-blog，使用 React 与 Vite，发布到 GitHub Pages（https://kairyqi.github.io/kairyqi-blog/）。新增内容时先确定板块，并整理标题、日期、分类、摘要、正文及相关链接或媒体；保持桌面与手机布局、列表/详情/搜索和 Pages 子路径资源引用正常。修改后先完成构建检查，再提交并推送 main 发布，只提交本次相关内容，不带入临时附件或无关文件；最后说明改动和发布结果。',
+      '列表页与详情页的 Stitch 迭代（2026-10-19）：在首页风格基础上，继续把列表页和内容详情页对照 Stitch 画板重做。列表页增加面包屑、板块介绍、真实记录数、标签筛选、标题与正文搜索、排序、分页和主题侧栏；详情页补充标签、摘要、日期与预计阅读时间、复制链接、字号调整、分享、目录和阅读进度，并加入作者信息与前后篇导航。页面只呈现现有真实条目和计算出的数量，不复用画板中的示例内容。桌面端使用主内容加辅助侧栏；手机端将列表和文章收成单列，并把桌面侧边目录改为可展开的目录抽屉。通过本地预览逐页检查后再细调卡片、间距与断点，避免仅凭桌面截图判断响应式效果。',
     ],
   },
   {
@@ -185,9 +187,25 @@ const bookmarks = [
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
 ]
 
+function ArchiveHeader({ homeUrl }) {
+  const [open, setOpen] = useState(false)
+  const close = () => setOpen(false)
+  return <header className="site-header page-width">
+    <a className="wordmark" href={homeUrl} onClick={close}><span className="wordmark-icon">KQ</span><span className="wordmark-lockup"><strong>KairyQi 的空间</strong><small>// tech notes &amp; logs</small></span></a>
+    <a className="header-search" href={`${homeUrl}?view=search`} aria-label="搜索空间"><Icon name="search" size={16}/><span>快速索引...</span><kbd>⌘K</kbd></a>
+    <button className="menu-toggle" aria-label="切换版块导航" aria-expanded={open} onClick={() => setOpen(!open)}><span/><span/><b>版块</b></button>
+    <nav className={open ? 'main-nav is-open' : 'main-nav'} aria-label="主导航">
+      <a href={`${homeUrl}#about`} onClick={close}>关于空间</a><a href={`${homeUrl}#experience`} onClick={close}>日志</a><a href={`${homeUrl}#notes`} onClick={close}>技术笔记</a><a href={`${homeUrl}#moments`} onClick={close}>生活随记</a><a href={`${homeUrl}#favorites`} onClick={close}>收藏夹</a><a href={`${homeUrl}#projects`} onClick={close}>项目</a><a href={`${homeUrl}#tags`} onClick={close}>标签</a><span className="header-status"><i/> ONLINE <b>⌖</b></span>
+    </nav>
+  </header>
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [emailCopied, setEmailCopied] = useState(false)
+  const [articleCopied, setArticleCopied] = useState(false)
+  const [articleFontSize, setArticleFontSize] = useState(18)
+  const [readingProgress, setReadingProgress] = useState(0)
   const closeMenu = () => setMenuOpen(false)
   const copyEmail = async () => {
     try {
@@ -206,7 +224,16 @@ function App() {
   const sectionNames = { journal: '日志', notes: '技术笔记', moments: '生活随记', favorites: '收藏夹', projects: '项目' }
   const pageSize = 6
   const sortedEntries = [...logEntries].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
-  const sectionItems = (pageSection === 'journal' ? sortedEntries : sortedEntries.filter(item => item.section === pageSection))
+  const sectionItems = pageSection === 'journal' ? sortedEntries : sortedEntries.filter(item => item.section === pageSection)
+  const listQuery = (params.get('q') || '').trim()
+  const selectedListTag = params.get('tag') || ''
+  const listSort = params.get('sort') || 'newest'
+  const sectionTagCounts = [...new Set(sectionItems.flatMap(item => item.tags || []))].map(tag => ({ tag, count: sectionItems.filter(item => (item.tags || []).includes(tag)).length })).sort((a, b) => b.count - a.count || a.tag.localeCompare(b.tag))
+  const filteredItems = sectionItems.filter(item => {
+    const matchesTag = !selectedListTag || (item.tags || []).includes(selectedListTag) || item.category === selectedListTag
+    const matchesQuery = !listQuery || [item.title, item.category, item.note, ...(item.tags || []), ...(item.body || [])].join(' ').toLocaleLowerCase().includes(listQuery.toLocaleLowerCase())
+    return matchesTag && matchesQuery
+  }).sort((a, b) => listSort === 'oldest' ? (a.date || '').localeCompare(b.date || '') : listSort === 'title' ? a.title.localeCompare(b.title, 'zh-CN') : (b.date || '').localeCompare(a.date || ''))
   const noteEntries = sortedEntries.filter(item => item.section === 'notes')
   const searchableItems = [
     ...logEntries,
@@ -218,20 +245,89 @@ function App() {
   const searchResults = searchQuery
     ? searchableItems.filter(item => [item.title, item.category, item.note, ...(item.tags || []), ...item.body].join(' ').toLocaleLowerCase().includes(searchQuery.toLocaleLowerCase()))
     : []
-  const pageCount = Math.max(1, Math.ceil(sectionItems.length / pageSize))
-  const pageItems = sectionItems.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
+  const pageCount = Math.max(1, Math.ceil(filteredItems.length / pageSize))
+  const pageItems = filteredItems.slice((pageNumber - 1) * pageSize, pageNumber * pageSize)
   const detailItem = view === 'detail' ? logEntries.find(item => item.id === params.get('id')) : null
+  const articleText = detailItem ? detailItem.body.join(' ') : ''
+  const articleWordCount = articleText.replace(/\s/g, '').length
+  const articleReadMinutes = Math.max(1, Math.ceil(articleWordCount / 400))
+  const articleOutline = detailItem?.outline?.length ? detailItem.outline : ['记录内容']
+  const articleSections = detailItem ? articleOutline.map((heading, index) => ({ heading, paragraphs: detailItem.outline?.length ? [detailItem.body[index]].filter(Boolean) : detailItem.body })) : []
+  const articleUrl = window.location.href
+  const copyArticleLink = async () => {
+    try { await navigator.clipboard.writeText(articleUrl); setArticleCopied(true); window.setTimeout(() => setArticleCopied(false), 1800) }
+    catch { window.prompt('复制文章链接', articleUrl) }
+  }
   const routeForList = (section, page = 1) => '?view=list&section=' + section + '&page=' + page
+  const listHref = (tag = selectedListTag, page = 1) => {
+    const query = new URLSearchParams({ view: 'list', section: pageSection, page: String(page) })
+    if (tag) query.set('tag', tag)
+    if (listQuery) query.set('q', listQuery)
+    if (listSort !== 'newest') query.set('sort', listSort)
+    return `?${query.toString()}`
+  }
   const routeForDetail = id => '?view=detail&id=' + id
   const routeForTag = tag => '?view=tags&tag=' + encodeURIComponent(tag)
   const selectedTag = params.get('tag') || ''
   const tagEntries = selectedTag ? searchableItems.filter(item => (item.tags || []).includes(selectedTag)) : []
   const tagCounts = allTags.map(tag => ({ tag, count: searchableItems.filter(item => (item.tags || []).includes(tag)).length })).filter(item => item.count > 0).sort((a, b) => b.count - a.count || allTags.indexOf(a.tag) - allTags.indexOf(b.tag))
   const homeUrl = import.meta.env.BASE_URL
+  useEffect(() => {
+    if (view !== 'detail') return undefined
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight
+      setReadingProgress(max > 0 ? Math.min(100, Math.round((window.scrollY / max) * 100)) : 100)
+    }
+    updateProgress()
+    window.addEventListener('scroll', updateProgress, { passive: true })
+    window.addEventListener('resize', updateProgress)
+    return () => { window.removeEventListener('scroll', updateProgress); window.removeEventListener('resize', updateProgress) }
+  }, [view, detailItem?.id])
+  if (view === 'list') return <div className="archive-page stitch-list-page">
+    <ArchiveHeader homeUrl={homeUrl}/>
+    <main className="archive-main archive-list-main page-width">
+      <nav className="archive-breadcrumb" aria-label="面包屑"><a href={homeUrl}>首页</a><span>/</span><span>{sectionNames[pageSection] || '日志'}</span></nav>
+      <section className="list-page-intro"><div><div className="section-kicker">// {pageSection === 'notes' ? 'TECHNICAL NOTES & ENGINEERING LOG' : 'PERSONAL ARCHIVE'}</div><h1>{sectionNames[pageSection] || '日志'}</h1><p className="archive-description">{pageSection === 'notes' ? '记录开发过程中的实践、思路与复盘。' : pageSection === 'journal' ? '按时间整理空间里的技术笔记、收藏、项目与生活片段。' : `关于「${sectionNames[pageSection] || '日志'}」的记录与整理。`}</p></div><div className="list-total"><strong>{String(filteredItems.length).padStart(2, '0')}</strong><span>条记录</span><small>{selectedListTag ? `标签：${selectedListTag}` : '持续归档中'}</small></div></section>
+      <div className="archive-layout">
+        <div className="archive-results-column">
+          <form className="list-tools" action={homeUrl} method="get"><input type="hidden" name="view" value="list"/><input type="hidden" name="section" value={pageSection}/><input type="hidden" name="page" value="1"/>{selectedListTag && <input type="hidden" name="tag" value={selectedListTag}/>}<label className="list-search"><Icon name="search" size={16}/><input type="search" name="q" defaultValue={listQuery} placeholder="在本版块中搜索..."/><kbd>⌘K</kbd></label><label className="list-sort"><span>排序</span><select name="sort" defaultValue={listSort} onChange={event => event.currentTarget.form.requestSubmit()}><option value="newest">按发布时间（最新）</option><option value="oldest">按发布时间（最早）</option><option value="title">按标题</option></select></label><button className="list-search-submit" type="submit">搜索</button></form>
+          <div className="list-filter-row" aria-label="按标签筛选"><a className={!selectedListTag ? 'is-active' : ''} href={listHref('', 1)}>全部 <b>{sectionItems.length}</b></a>{sectionTagCounts.slice(0, 8).map(item => <a className={selectedListTag === item.tag ? 'is-active' : ''} href={listHref(item.tag, 1)} key={item.tag}>{item.tag}<b>{item.count}</b></a>)}</div>
+          <div className="list-result-count">显示 {pageItems.length ? (pageNumber - 1) * pageSize + 1 : 0}–{Math.min(pageNumber * pageSize, filteredItems.length)} 条，共 {filteredItems.length} 条</div>
+          <div className="archive-list stitch-archive-list">{pageItems.length ? pageItems.map(item => <a className="archive-row stitch-archive-row" href={routeForDetail(item.id)} key={item.id}><span className="archive-date">{item.date || '收藏夹'}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span><span className="inline-tags">{(item.tags || []).slice(0, 4).map(tag => <span key={tag}>{tag}</span>)}</span></span><span className="archive-row-arrow"><Icon name="arrow" size={17}/></span></a>) : <div className="empty-state">{listQuery || selectedListTag ? '没有找到符合条件的记录，调整搜索词或标签再试试。' : '这里还没有记录，之后有内容时再慢慢补上。'}</div>}</div>
+          {pageCount > 1 && <nav className="pagination stitch-pagination" aria-label="列表分页"><a className={pageNumber <= 1 ? 'page-disabled' : ''} href={listHref(selectedListTag, Math.max(1, pageNumber - 1))}>‹ 上一页</a><div>{Array.from({ length: pageCount }, (_, index) => index + 1).map(page => <a className={page === pageNumber ? 'is-current' : ''} href={listHref(selectedListTag, page)} key={page}>{page}</a>)}</div><a className={pageNumber >= pageCount ? 'page-disabled' : ''} href={listHref(selectedListTag, Math.min(pageCount, pageNumber + 1))}>下一页 ›</a></nav>}
+        </div>
+        <aside className="archive-side"><section className="archive-side-panel"><span className="side-kicker">// COLLECTIONS</span><h2>专栏速览</h2>{sectionTagCounts.length ? sectionTagCounts.slice(0, 4).map(item => <a className="side-topic" href={listHref(item.tag, 1)} key={item.tag}><span>{item.tag}</span><b>{item.count}</b></a>) : <p>内容会按主题整理在这里。</p>}</section><section className="archive-side-panel"><span className="side-kicker">// TOP TAGS</span><h2>热门标签</h2><div className="side-tag-cloud">{sectionTagCounts.slice(0, 8).map(item => <a href={listHref(item.tag, 1)} key={item.tag}>#{item.tag}<small>{item.count}</small></a>)}</div></section><div className="archive-side-note"><span>INDEX ENGINE</span><strong>第 {pageNumber} / {pageCount} 页</strong><small>已按当前筛选条件整理</small></div></aside>
+      </div>
+    </main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer>
+  </div>
+  if (view === 'detail' && detailItem) {
+    const detailIndex = sortedEntries.findIndex(item => item.id === detailItem.id)
+    const newer = sortedEntries[detailIndex - 1]
+    const older = sortedEntries[detailIndex + 1]
+    return <div className="archive-page stitch-detail-page" id="top">
+      <ArchiveHeader homeUrl={homeUrl}/>
+      <main className="detail-main stitch-detail-main page-width">
+        <nav className="archive-breadcrumb" aria-label="面包屑"><a href={homeUrl}>首页</a><span>/</span><a href={routeForList(detailItem.section)}>{sectionNames[detailItem.section]}</a><span>/</span><span>正文</span></nav>
+        <div className="detail-layout">
+          <article className="stitch-article">
+            <div className="article-taxonomy">{(detailItem.tags || []).slice(0, 4).map(tag => <a href={routeForTag(tag)} key={tag}>#{tag}</a>)}</div>
+            <h1>{detailItem.title}</h1><p className="article-subtitle">{detailItem.note}</p>
+            <div className="article-byline"><img src={profileAvatar} alt="KairyQi"/><div><strong>KairyQi</strong><span>{detailItem.category}</span></div><i/><span>{detailItem.date}</span><span>约 {articleReadMinutes} 分钟</span><span>{articleWordCount.toLocaleString()} 字</span></div>
+            <div className="article-toolbar"><button type="button" onClick={copyArticleLink}><Icon name="link" size={15}/>{articleCopied ? '已复制链接' : '复制链接'}</button><div className="font-tools"><button type="button" aria-label="缩小字号" onClick={() => setArticleFontSize(size => Math.max(15, size - 1))}>A−</button><span>|</span><button type="button" aria-label="放大字号" onClick={() => setArticleFontSize(size => Math.min(23, size + 1))}>A＋</button></div><button type="button" onClick={async () => { try { if (navigator.share) await navigator.share({ title: detailItem.title, url: articleUrl }); else await copyArticleLink() } catch { /* Share dialog dismissed. */ } }}><Icon name="external" size={15}/>分享</button></div>
+            <blockquote className="detail-lead"><span>“</span><p>{detailItem.note}</p></blockquote>
+            <details className="mobile-article-toc"><summary>目录大纲 <span>{articleOutline.length} 节</span></summary><nav>{articleOutline.map((heading, index) => <a href={`#article-part-${index + 1}`} key={heading}>{String(index + 1).padStart(2, '0')}　{heading}</a>)}</nav></details>
+            <div className="stitch-detail-body" style={{ '--article-font-size': `${articleFontSize}px` }}>{articleSections.map((section, index) => <section className="article-section" id={`article-part-${index + 1}`} key={section.heading}><h2><small>{String(index + 1).padStart(2, '0')}</small>{section.heading}</h2>{section.paragraphs.map((paragraph, paragraphIndex) => <p key={paragraphIndex}>{paragraph}</p>)}</section>)}</div>
+            <div className="detail-tags"><span>{detailItem.category}</span>{(detailItem.tags || []).map(tag => <a href={routeForTag(tag)} key={tag}>{tag}</a>)}</div>
+            <section className="article-author-card"><img src={profileAvatar} alt="KairyQi"/><div><span>ABOUT THE AUTHOR</span><strong>KairyQi</strong><small>记录技术探索、AI 实践、灵感收藏与日常生活。</small></div><a href="mailto:kairyqi@gmail.com"><Icon name="mail" size={15}/> 与我交流</a></section>
+            <nav className="detail-pagination"><a href={newer ? routeForDetail(newer.id) : routeForList(detailItem.section)}><small>较新的记录</small><strong>{newer ? newer.title : '返回列表'}</strong></a><a href={older ? routeForDetail(older.id) : routeForList(detailItem.section)}><small>较早的记录</small><strong>{older ? older.title : '返回列表'}</strong></a></nav>
+          </article>
+          <aside className="article-rail"><section className="article-toc"><span className="side-kicker">// 目录大纲</span><div className="reading-progress"><span style={{ width: `${readingProgress}%` }}/></div><small>{readingProgress}% 已读</small><nav>{articleOutline.map((heading, index) => <a href={`#article-part-${index + 1}`} key={heading}><b>{String(index + 1).padStart(2, '0')}</b>{heading}</a>)}</nav><a className="back-to-top" href="#top">↑ 返回顶部</a></section><section className="article-rail-meta"><span>{articleWordCount.toLocaleString()} 字符</span><span>约 {articleReadMinutes} 分钟</span></section></aside>
+        </div>
+      </main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer>
+    </div>
+  }
   if (view === 'search') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main search-main page-width"><div className="section-kicker">空间索引　/　全站搜索</div><h1>搜索记录</h1><p className="archive-description">按标题或正文查找技术笔记、收藏与生活记录。</p><form className="site-search-form" action={homeUrl} method="get"><input type="hidden" name="view" value="search"/><label className="sr-only" htmlFor="site-search">搜索标题和正文</label><input id="site-search" type="search" name="q" defaultValue={searchQuery} placeholder="输入关键词，例如：个人空间" autoFocus/><button type="submit"><Icon name="search" size={17}/> 搜索</button></form><div className="search-results-heading">{searchQuery ? `“${searchQuery}” 的搜索结果 · ${searchResults.length} 条` : '输入关键词开始搜索'}</div><div className="archive-list search-results">{searchQuery ? searchResults.length ? searchResults.map(item => <a className="archive-row" href={item.externalLink || routeForDetail(item.id)} target={item.externalLink ? '_blank' : undefined} rel={item.externalLink ? 'noreferrer' : undefined} key={`${item.section}-${item.id}`}><span className="archive-date">{item.date || '收藏夹'}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span></span><span className="archive-row-arrow"><Icon name={item.externalLink ? 'external' : 'arrow'} size={17}/></span></a>) : <div className="empty-state">没有找到匹配的记录，试试其他关键词。</div> : <div className="empty-state">搜索会同时匹配记录标题、分类、摘要和正文。</div>}</div></main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
-  if (view === 'list') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main page-width"><div className="section-kicker">内容归档　/　{sectionNames[pageSection] || '日志'}</div><h1>{sectionNames[pageSection] || '日志'}</h1><p className="archive-description">{pageSection === 'journal' ? '按时间整理空间里的技术笔记、收藏、项目与生活片段。' : '关于「' + (sectionNames[pageSection] || '日志') + '」的记录与整理。'}</p><div className="archive-list">{pageItems.length ? pageItems.map(item => <a className="archive-row" href={routeForDetail(item.id)} key={item.id}><span className="archive-date">{item.date}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span></span><span className="archive-row-arrow"><Icon name="arrow" size={17}/></span></a>) : <div className="empty-state">这里还没有记录，之后有内容时再慢慢补上。</div>}</div><nav className="pagination" aria-label="列表分页"><a className={pageNumber <= 1 ? 'page-disabled' : ''} href={routeForList(pageSection, Math.max(1, pageNumber - 1))}>上一页</a><span>第 {pageNumber} / {pageCount} 页</span><a className={pageNumber >= pageCount ? 'page-disabled' : ''} href={routeForList(pageSection, Math.min(pageCount, pageNumber + 1))}>下一页</a></nav></main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
   if (view === 'tags') return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={homeUrl}>返回空间首页 <Icon name="arrow" size={15}/></a></header><main className="archive-main page-width tags-main"><div className="section-kicker">空间索引　/　标签浏览</div><h1>{selectedTag || '标签浏览'}</h1><p className="archive-description">{selectedTag ? '包含「' + selectedTag + '」标签的记录 · ' + tagEntries.length + ' 条' : '按主题浏览记录。一级分类帮助整理方向，具体标签用于跨板块关联。'}</p><div className="tag-groups">{tagGroups.map(group => <section className="tag-group" key={group.name}><h2>{group.name}</h2><div className="tag-cloud">{group.tags.map(tag => <a className={tag === selectedTag ? 'tag-chip is-active' : 'tag-chip'} href={routeForTag(tag)} key={tag}>{tag}<span>{searchableItems.filter(item => (item.tags || []).includes(tag)).length}</span></a>)}</div></section>)}</div>{selectedTag && <><div className="search-results-heading">相关记录</div><div className="archive-list">{tagEntries.length ? tagEntries.map(item => <a className="archive-row" href={item.externalLink || routeForDetail(item.id)} target={item.externalLink ? '_blank' : undefined} rel={item.externalLink ? 'noreferrer' : undefined} key={item.id}><span className="archive-date">{item.date || '收藏夹'}</span><span className="archive-row-main"><span className="archive-category">{item.category}</span><strong>{item.title}</strong><span className="archive-excerpt">{item.note}</span><span className="inline-tags">{(item.tags || []).map(tag => <span key={tag}>{tag}</span>)}</span></span><span className="archive-row-arrow"><Icon name={item.externalLink ? 'external' : 'arrow'} size={17}/></span></a>) : <div className="empty-state">这个标签下还没有记录。</div>}</div></>}</main><footer className="archive-footer page-width">KairyQi 的空间 <span>个人记录 · 持续更新</span></footer></div>
-  if (view === 'detail' && detailItem) { const detailIndex = sortedEntries.findIndex(item => item.id === detailItem.id); const newer = sortedEntries[detailIndex - 1]; const older = sortedEntries[detailIndex + 1]; return <div className="archive-page"><header className="archive-header page-width"><a className="wordmark" href={homeUrl}><span className="wordmark-icon"><Icon name="spark" size={16}/></span> KairyQi<span className="wordmark-dot">.</span></a><a className="archive-back" href={routeForList(detailItem.section)}>返回{sectionNames[detailItem.section]} <Icon name="arrow" size={15}/></a></header><main className="detail-main page-width"><div className="detail-cover"><span className="section-kicker">{detailItem.category}</span><span className="detail-cover-mark">{detailItem.section === 'moments' ? '记' : detailItem.section === 'favorites' ? '藏' : detailItem.section === 'projects' ? '项' : '札'}</span></div><article className="detail-article"><div className="detail-meta"><span>{detailItem.date}</span><span>·</span><span>{sectionNames[detailItem.section]}</span></div><h1>{detailItem.title}</h1><p className="detail-lead">{detailItem.note}</p><div className="detail-body">{detailItem.body.map((paragraph, index) => <p key={index}>{paragraph}</p>)}</div><div className="detail-tags"><span>{detailItem.category}</span>{(detailItem.tags || []).map(tag => <a href={routeForTag(tag)} key={tag}>{tag}</a>)}<span>KairyQi 的空间</span></div></article><nav className="detail-pagination"><a href={newer ? routeForDetail(newer.id) : routeForList(detailItem.section)}><small>较新的记录</small><strong>{newer ? newer.title : '返回列表'}</strong></a><a href={older ? routeForDetail(older.id) : routeForList(detailItem.section)}><small>较早的记录</small><strong>{older ? older.title : '返回列表'}</strong></a></nav></main></div> }
   return <>
     <header className="site-header page-width">
         <a className="wordmark" href="#home" onClick={closeMenu}><span className="wordmark-icon">KQ</span><span className="wordmark-lockup"><strong>KairyQi 的空间</strong><small>// tech notes &amp; logs</small></span></a>
