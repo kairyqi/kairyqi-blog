@@ -96,15 +96,18 @@ const recommendTags = text => {
 
 const logEntries = [
   {
-    id: 'motionsites-thumbnail-update', section: 'favorites', date: '2026.10.19', category: '收藏夹 · 网站预览',
-    title: '给 MotionSites 收藏补上网站缩略图',
-    note: '为收藏卡片添加网页预览图，并把这次收藏展示优化补记到日志。之后遇到能稳定获取缩略图的收藏，也一并补上。',
-    tags: ['实用网站', '网页设计', '视觉灵感', '个人想法'],
+    id: 'bigmeok-bookmark', section: 'favorites', date: '2026.10.19', category: '收藏夹 · 网络工具',
+    title: '收藏当前使用的 Bigmeok 代理入口',
+    note: '将目前正在使用的 VPN / 代理服务入口加入收藏夹，便于之后快速访问。',
+    tags: ['网络工具', '效率工具', '实用网站'],
+    externalLink: 'https://pub.bigmeok.me/',
     body: [
-      '给 MotionSites 的收藏卡片补充了网页预览缩略图，让收藏内容不只显示标题和文字，也能快速看到网站的视觉风格。',
-      '缩略图通过网页截图服务获取，展示效果依赖目标网站和截图服务是否可访问。后续新增收藏时，如果网站能提供 Open Graph 图片、站点图标或可用的网页截图，就顺手为卡片添加缩略图；若无法可靠获取，则保留原有文字卡片，不强行添加。'
+      '把 Bigmeok（https://pub.bigmeok.me/）加入个人空间网站的收藏夹，分类为「网络工具」，作为当前使用的 VPN / 代理服务入口。',
+      '这条日志只记录收藏事项本身，不记录或混入对个人空间网站进行的界面优化、缩略图调整等维护过程。'
     ],
   },
+  {
+
   { id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计', title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。'] },
   {
     id: 'personal-space-build', section: 'notes', date: '2026.10.17', category: '技术笔记 · 个人网站',
