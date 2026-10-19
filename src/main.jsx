@@ -233,12 +233,12 @@ function App() {
     </div></section>
     <nav className="profile-index" aria-label="空间内容索引">
       <span className="profile-index-label">// 目录检索 <i>(INDEX)</i></span>
-      <a href="#experience"><span>日志</span><small>时间轴</small><b>{Math.min(3, sortedEntries.length).toString().padStart(2, '0')}</b></a>
-      <a href="#notes"><span>技术笔记</span><small>专栏</small><b>{noteEntries.length.toString().padStart(2, '0')}</b></a>
-      <a href="#moments"><span>生活随记</span><small>光影</small><b>{sortedEntries.filter(item => item.section === 'moments').length.toString().padStart(2, '0')}</b></a>
-      <a href="#favorites"><span>收藏夹</span><small>资源</small><b>{bookmarks.length.toString().padStart(2, '0')}</b></a>
-      <a href="#projects"><span>待办项目</span><small>进展</small><b>{sortedEntries.filter(item => item.section === 'projects').length.toString().padStart(2, '0')}</b></a>
-      <a href="#tags"><span>标签云</span><small>索引</small><b>{tagCounts.length.toString().padStart(2, '0')}</b></a>
+      <a href="#experience"><span>日志</span><span className="index-meta"><small>时间轴</small><b>{Math.min(3, sortedEntries.length).toString().padStart(2, '0')}</b></span></a>
+      <a href="#notes"><span>技术笔记</span><span className="index-meta"><small>专栏</small><b>{noteEntries.length.toString().padStart(2, '0')}</b></span></a>
+      <a href="#moments"><span>生活随记</span><span className="index-meta"><small>光影</small><b>{sortedEntries.filter(item => item.section === 'moments').length.toString().padStart(2, '0')}</b></span></a>
+      <a href="#favorites"><span>收藏夹</span><span className="index-meta"><small>资源</small><b>{bookmarks.length.toString().padStart(2, '0')}</b></span></a>
+      <a href="#projects"><span>待办项目</span><span className="index-meta"><small>进展</small><b>{sortedEntries.filter(item => item.section === 'projects').length.toString().padStart(2, '0')}</b></span></a>
+      <a href="#tags"><span>标签云</span><span className="index-meta"><small>索引</small><b>{tagCounts.length.toString().padStart(2, '0')}</b></span></a>
       <div className="profile-social"><a href="https://github.com/kairyqi" target="_blank" rel="noreferrer"><Icon name="github" size={15}/> GitHub</a><a href="mailto:kairyqi@gmail.com"><Icon name="mail" size={15}/> 邮件联系</a></div>
     </nav>
     </aside>

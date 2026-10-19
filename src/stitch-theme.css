@@ -345,8 +345,10 @@ html, body { background-color: var(--stitch-bg); }
 .profile-column .contact-chips button small { margin-left: auto; color: #73869d; font-size: 8px; }
 .profile-column .contact-chips a { color: #a9eaff; border-color: rgba(56, 189, 248, .25); background: rgba(56, 189, 248, .09); }
 .profile-index > a { grid-template-columns: minmax(0, 1fr) auto; min-height: 41px; font-size: 11px; }
-.profile-index > a small { justify-self: end; margin-right: 8px; }
-.profile-index > a b { min-width: 22px; color: #7f91a7; font: 9px var(--mono); text-align: right; }
+.profile-index > a > span:first-child { align-self: start; padding-top: 7px; color: #d5e1ee; font-weight: 600; }
+.profile-index > a .index-meta { display: flex; min-width: 54px; flex-direction: column; align-items: flex-end; gap: 5px; padding: 5px 0 4px; }
+.profile-index > a .index-meta small { margin: 0; color: #8192a7; font-size: 9px; line-height: 1; }
+.profile-index > a .index-meta b { min-width: 22px; color: #91a4b9; font: 9px var(--mono); line-height: 1; text-align: right; }
 .main-column .section-heading { align-items: center; }
 .main-column .section-heading > div:first-child { display: grid; gap: 4px; }
 .main-column .section-heading h2 { font-size: 20px; }
