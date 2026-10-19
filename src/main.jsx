@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
+import './stitch-theme.css'
 import profileAvatar from "../kairyqi-profile.jpg"
 
 const Icon = ({ name, size = 18 }) => {
@@ -211,26 +212,7 @@ function App() {
           <a className="nav-contact" href="#contact" onClick={closeMenu}>联系方式 <Icon name="arrow" size={15} /></a>
         </nav>
       </header>
-    <section className="hero" id="home">
-      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true">
-        <source src="https://videos.pexels.com/video-files/14209120/14209120-hd_1920_1080_30fps.mp4" type="video/mp4" />
-      </video>
-      <MotionField />
-      <div className="hero-glow" />
-      <div className="hero-content page-width">
-        <div className="hero-copy">
-          <div className="availability"><span className="availability-dot" /> 个人记录 · 持续更新</div>
-          <p className="hero-overline">KairyQi <span>／</span> 个人记录</p>
-          <h1>把感兴趣的事，<br /><span>慢慢记下来</span><b className="hero-cursor">_</b></h1>
-          <p className="hero-intro">技术、影像与生活的片段，慢慢整理成自己的记录。</p>
-          <div className="hero-actions"><a href="#projects" className="button button-primary">项目记录 <Icon name="arrow" size={16} /></a><a href="#about" className="button button-quiet">关于这个空间 <span className="play-icon"><Icon name="play" size={13} /></span></a></div>
-        </div>
-        <div className="hero-aside"><div className="hero-coordinate">最近在看<br />AI · 软件 · 影像</div><div className="hero-orbit"><div className="orbit-ring ring-one"/><div className="orbit-ring ring-two"/><div className="orbit-core"><Icon name="code" size={34}/></div><i className="orbit-dot dot-a"/><i className="orbit-dot dot-b"/><i className="orbit-dot dot-c"/></div><div className="hero-side-note"><span className="mono-label">记录范围</span><strong>技术 × 影像 × 生活</strong><span>随手收集，慢慢整理</span></div></div>
-      </div>
-      <div className="hero-bottom page-width"><span><span className="scroll-line"/> 继续往下看</span><span className="hero-index">KairyQi 的空间　/　2026</span></div>
-    </section>
-
-    <div className="body-layout page-width">
+    <div className="body-layout page-width" id="home">
     <aside className="profile-column">
     <section className="about-section section-pad" id="about"><div className="page-width">
       <div className="section-heading"><div><h2><em>01 /</em> 关于空间</h2></div><p>技术、影像和生活，都可以慢慢记录。</p></div>
@@ -240,6 +222,16 @@ function App() {
         <div className="about-stats"><div className="stat"><strong>AI × 软件</strong><small>开发与实践</small></div><div className="stat"><strong>影像</strong><small>短视频与旅拍</small></div><div className="stat status-stat"><span className="availability-dot"/><small>持续更新</small><strong>生活与随想</strong></div></div>
       </div>
     </div></section>
+    <nav className="profile-index" aria-label="空间内容索引">
+      <span className="profile-index-label">空间索引 <i>INDEX</i></span>
+      <a href="#experience"><span>日志</span><small>时间轴</small><Icon name="arrow" size={14}/></a>
+      <a href="#notes"><span>技术笔记</span><small>AI · 软件 · 开发</small><Icon name="arrow" size={14}/></a>
+      <a href="#moments"><span>生活随记</span><small>影像与日常</small><Icon name="arrow" size={14}/></a>
+      <a href="#favorites"><span>收藏夹</span><small>网站与灵感</small><Icon name="arrow" size={14}/></a>
+      <a href="#projects"><span>项目</span><small>进行中的尝试</small><Icon name="arrow" size={14}/></a>
+      <a href="#tags"><span>标签</span><small>主题索引</small><Icon name="arrow" size={14}/></a>
+      <div className="profile-social"><a href="https://github.com/kairyqi" target="_blank" rel="noreferrer"><Icon name="github" size={15}/> GitHub</a><a href="mailto:kairyqi@gmail.com"><Icon name="mail" size={15}/> 邮件联系</a></div>
+    </nav>
     </aside>
     <div className="main-column">
 
