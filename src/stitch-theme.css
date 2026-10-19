@@ -223,7 +223,7 @@ body {
 
 /* Stitch archive and article layouts */
 .stitch-list-page,.stitch-detail-page { padding-top: 1px; }
-.stitch-list-page .archive-list-main { max-width: 1500px; padding-top: 112px; }
+.stitch-list-page .archive-list-main { width:min(calc(100% - 56px),1700px); max-width:1700px; padding-top:112px; }
 .archive-breadcrumb { display:flex; align-items:center; gap:12px; margin-bottom:34px; color:#77899d; font-size:12px; }
 .archive-breadcrumb a { color:#91a7bd; text-decoration:none; }
 .archive-breadcrumb a:hover { color:var(--cyan); }
@@ -281,7 +281,7 @@ body {
 .archive-side-note span { color:#6fc9dd; font:9px var(--mono,monospace); letter-spacing:.12em; }
 .archive-side-note strong { color:#dbe9f4; font-size:13px; }
 .archive-side-note small { color:#8295a8; font-size:10px; }
-.stitch-detail-main { max-width:1420px; padding-top:112px; }
+.stitch-detail-main { width:min(calc(100% - 56px),1700px); max-width:1700px; padding-top:112px; }
 .detail-layout { display:grid; grid-template-columns:minmax(0,850px) 260px; justify-content:center; gap:72px; }
 .stitch-article { min-width:0; }
 .article-taxonomy { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
