@@ -107,8 +107,23 @@ const logEntries = [
     ],
   },
   {
-
-  { id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计', title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。'] },
+    id: 'motionsites-bookmark', section: 'favorites', date: '2026.10.18', category: '收藏夹 · AI 建站',
+    title: '收藏 MotionSites 网站设计灵感库',
+    note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源。',
+    tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'],
+    externalLink: 'https://motionsites.org/',
+    body: [
+      '把 MotionSites（https://motionsites.org/）加入个人空间网站收藏夹，作为网站设计、动态效果和页面灵感的参考入口。',
+      '后续可以结合正在进行的 Vibe Coding 工具研究，筛选适合个人空间的设计思路。'
+    ],
+  },
+  {
+    id: 'pinterest', section: 'favorites', date: '2026.10.17', category: '收藏夹 · 网站设计',
+    title: 'Pinterest', note: '收集视觉灵感，也用来参考网站设计与页面布局。',
+    tags: ['视觉灵感', '网页设计', '实用网站'],
+    externalLink: 'https://jp.pinterest.com/',
+    body: ['Pinterest 是一个视觉内容发现与收藏平台。这里先记下它，作为网站设计、版式和视觉表达的灵感入口。']
+  },
   {
     id: 'personal-space-build', section: 'notes', date: '2026.10.17', category: '技术笔记 · 个人网站',
     title: '从一次个人空间搭建，整理我的设计与实现思路',
@@ -143,9 +158,9 @@ const logEntries = [
 ]
 
 const bookmarks = [
-  { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
-  { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/', image: 'https://image.thum.io/get/width/1200/crop/800/https://motionsites.org/' },
   { category: '网络工具', type: 'VPN · 代理服务', title: 'Bigmeok', note: '目前正在使用的 VPN / 代理服务入口，方便之后快速访问。', tags: ['网络工具', '效率工具', '实用网站'], icon: 'link', label: '网络工具', link: 'https://pub.bigmeok.me/', image: 'https://image.thum.io/get/width/1200/crop/800/https://pub.bigmeok.me/' },
+  { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/', image: 'https://image.thum.io/get/width/1200/crop/800/https://motionsites.org/' },
+  { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
 ]
 
 function App() {
