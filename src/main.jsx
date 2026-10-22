@@ -178,6 +178,31 @@ const logEntries = [
       '完成标准：形成一份工具对比与成本记录，选定值得尝试的方案，并完成一个可在现有个人空间中验证的设计或交互改进。'
     ],
   },
+  {
+    id: 'h3-360-orbit-workflow', section: 'projects', date: '2026.10.22', category: '待办项目 · AI 视频',
+    title: '实践 ComfyUI + MiniMax H3 360° 环绕视频工作流',
+    note: '本地部署 MiniMax H3 360° 环绕 LoRA，用一张照片生成环绕人物/物体的视频，并沉淀到自有工作流。',
+    tags: ['AI视频', 'ComfyUI', 'MiniMax H3', '本地部署', '工作流', '待研究'],
+    externalLink: 'https://www.freedidi.com/25755.html',
+    body: [
+      '灵感来源：零度博客教程《ComfyUI + MiniMax H3：一张照片生成 360° 环绕视频》（https://www.freedidi.com/25755.html）。教程给出本地免费部署 MiniMax H3 360° 环绕 LoRA 的完整流程：安装 ComfyUI（选本地部署并启用镜像加速）、下载 5 个模型文件（Diffusion 模型、Text 编码器、两类 Vae、360° 环绕 LoRA）放到对应目录、导入单张照片或首尾帧两套工作流，提示词默认即可。',
+      '与自有环境的关联：本机为 RTX 4070 12GB，已部署 ComfyUI 便携版，正好可以对照教程把 360° 环绕工作流跑通，并评估 12GB 显存下 Diffusion 模型（int8_convrot 量化版）的运行表现。',
+      '计划研究：1）按教程路径核对并补齐本机已有模型；2）导入单张照片工作流，用一张人物/物体照片生成 360° 环绕视频；3）记录提示词、节点参数与显存占用；4）评估是否需要首尾帧工作流，以及能否融进现有的 H3 Studio 控制台。',
+      '实施原则：先在现有 ComfyUI 环境做小范围实验，不动个人空间网站代码；视频文件较大，不进 Git，完成后用链接或对象存储引用。',
+      '完成标准：跑通一条 360° 环绕视频样例，整理出可复用的模型清单、工作流与参数说明，并作为经验沉淀（可写入技术笔记或自有 skill）。'
+    ],
+  },
+  {
+    id: 'h3-360-orbit-and-tdmfast', section: 'journal', date: '2026.10.22', category: '日志 · 网站更新',
+    title: '收藏 MiniMax H3 360° 环绕视频教程，并列入待办与下载工具',
+    note: '把零度博客的 ComfyUI + MiniMax H3 教程加入收藏与待办，同时收藏 TDM Fast 高速下载器。',
+    tags: ['网站更新', '收藏', '待办项目', 'AI视频', 'ComfyUI', '下载工具'],
+    body: [
+      '今日更新个人空间：将零度博客文章《ComfyUI + MiniMax H3：一张照片生成 360° 环绕视频》（https://www.freedidi.com/25755.html）加入收藏夹，并把「本地实践这套 360° 环绕视频工作流」列入待办项目，链接回同一教程作为参考。',
+      '顺便把教程中提到的 TDM Fast 高速下载器加入收藏夹，用于之后加速下载开源模型与大文件。',
+      '这三条内容已随本次提交发布到 GitHub Pages；首页收藏夹、待办项目卡片与日志时间轴均会同步展示。'
+    ],
+  },
 ]
 
 const bookmarks = [
@@ -186,6 +211,7 @@ const bookmarks = [
   { category: 'AI 设计工具', type: '界面设计', title: 'Google Stitch', note: '用于生成和探索网站界面设计，也作为个人空间桌面端与移动端改版的参考。', tags: ['AI工具', '网页设计', '视觉灵感', '前端开发'], icon: 'spark', label: 'AI 设计', link: 'https://stitch.withgoogle.com/projects/11189735975645787200' },
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
   { category: 'AI 视频生成 · ComfyUI', type: '教程 · 工作流', title: 'ComfyUI + MiniMax H3：一张照片生成 360° 环绕视频', note: '零度博客教程：本地免费部署 MiniMax H3 360° 环绕 LoRA，附完整工作流，用一张照片即可生成环绕人物/物体的 360° 视频。', tags: ['AI视频', 'ComfyUI', 'MiniMax H3', '教程', '工作流', '本地部署'], icon: 'play', label: 'AI 视频', link: 'https://www.freedidi.com/25755.html', image: 'https://image.thum.io/get/width/1200/crop/800/https://www.freedidi.com/25755.html' },
+  { category: '下载工具 · 效率', type: '高速下载器', title: 'TDM Fast', note: '零度博客同款高速下载器，用于加速开源模型与大文件下载。', tags: ['下载工具', '效率工具', '实用网站', '模型下载'], icon: 'link', label: '下载工具', link: 'https://get.tdmfast.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://get.tdmfast.com/' },
 ]
 
 function ArchiveHeader({ homeUrl }) {
