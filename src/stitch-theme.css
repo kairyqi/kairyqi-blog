@@ -529,8 +529,9 @@ body { background:radial-gradient(ellipse at 84% 0%,rgba(98,145,203,.09),transpa
 .main-column .role-tag { border-color:#d7e4ee; background:#eff6fa; color:#4e819e; }
 .main-column .timeline-item:hover .timeline-content { border-color:#b9cfe2; background:#f5f9fc; }
 .main-column .note-card,.main-column .favorite-card,.main-column .project-card { border-color:#e0e7ef; background:#fff; box-shadow:0 7px 20px rgba(44,65,91,.045); }
-.main-column .note-card h3,.main-column .favorite-info h3,.main-column .project-info h3 { color:#2d3c50; }
-.main-column .note-card p,.main-column .favorite-info p,.main-column .project-info p { color:#697a90; }
+.main-column .note-card h3,.main-column .favorite-info h3,.main-column .project-info h3,.main-column .project-card-copy h3 { color:#2d3c50; }
+.main-column .note-card p,.main-column .favorite-info p,.main-column .project-info p,.main-column .project-card-copy p { color:#697a90; }
+.main-column .project-card-foot { color:#7b8798; }
 .main-column .note-type,.main-column .favorite-meta,.main-column .favorite-domain { color:#78879a; }
 .main-column .favorite-symbol { border-color:#d4e6f2; background:#eff7fb; color:#397fa8; }
 .main-column .favorite-meta b { background:#edf4fa; color:#557997; }
