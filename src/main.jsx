@@ -185,6 +185,7 @@ const bookmarks = [
   { category: 'AI 建站 · 设计灵感', type: 'Vibe Coding', title: 'MotionSites', note: '收藏用于探索高质感网站设计、动态效果与页面灵感的资源，后续研究如何将合适的设计应用到个人空间。', tags: ['AI工具', '提示词', '网页设计', '实用网站', '视觉灵感', '待研究'], icon: 'spark', label: 'AI 建站', link: 'https://motionsites.org/', image: 'https://image.thum.io/get/width/1200/crop/800/https://motionsites.org/' },
   { category: 'AI 设计工具', type: '界面设计', title: 'Google Stitch', note: '用于生成和探索网站界面设计，也作为个人空间桌面端与移动端改版的参考。', tags: ['AI工具', '网页设计', '视觉灵感', '前端开发'], icon: 'spark', label: 'AI 设计', link: 'https://stitch.withgoogle.com/projects/11189735975645787200' },
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
+  { category: 'AI 视频生成 · ComfyUI', type: '教程 · 工作流', title: 'ComfyUI + MiniMax H3：一张照片生成 360° 环绕视频', note: '零度博客教程：本地免费部署 MiniMax H3 360° 环绕 LoRA，附完整工作流，用一张照片即可生成环绕人物/物体的 360° 视频。', tags: ['AI视频', 'ComfyUI', 'MiniMax H3', '教程', '工作流', '本地部署'], icon: 'play', label: 'AI 视频', link: 'https://www.freedidi.com/25755.html', image: 'https://image.thum.io/get/width/1200/crop/800/https://www.freedidi.com/25755.html' },
 ]
 
 function ArchiveHeader({ homeUrl }) {
