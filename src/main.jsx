@@ -193,6 +193,20 @@ const logEntries = [
     ],
   },
   {
+    id: 'h3-douyin-long-video', section: 'projects', date: '2026.10.22', category: '待办项目 · AI 视频',
+    title: '研究 MiniMax H3 长视频与剧情玩法（零度解说抖音）',
+    note: '对照零度解说抖音视频，研究 H3 免费拍大片、长视频与剧情生成的玩法与落地方式。',
+    tags: ['AI视频', 'MiniMax H3', '抖音', '长视频', '剧情', '待研究'],
+    externalLink: 'https://v.douyin.com/CIY5b8NO_JE/',
+    body: [
+      '灵感来源：抖音账号「零度解说」的作品《MiniMax H3 免费拍大片！支持长视频、剧情...》（https://v.douyin.com/CIY5b8NO_JE/）。视频展示了 MiniMax H3 免费生成大片、支持长视频与剧情化生成的能力。',
+      '与现有研究的关联：前一条待办已把「ComfyUI + MiniMax H3 360° 环绕视频工作流」列入本地实践；这条补充 H3 在长视频与剧情叙事方向的应用，可作为同一工具链的能力扩展去研究。',
+      '计划研究：1）回看视频并确认 H3 长视频/剧情的具体入口、模型与提示词要求；2）评估是否需要不同于 360° 环绕的模型或工作流；3）结合本机 RTX 4070 12GB 与 ComfyUI 便携版，做一次小范围长视频/剧情样例实验；4）判断能否沉淀为自有 H3 Studio 控制台的一个模式。',
+      '实施原则：先做小范围验证，不动个人空间网站代码；视频文件较大，不进 Git，完成后用链接或对象存储引用。',
+      '完成标准：跑通或复现一个 H3 长视频/剧情样例，整理出所需模型、工作流与提示词要点，并作为经验沉淀（可写入技术笔记或自有 skill）。'
+    ],
+  },
+  {
     id: 'h3-360-orbit-and-tdmfast', section: 'journal', date: '2026.10.22', category: '日志 · 网站更新',
     title: '收藏 MiniMax H3 360° 环绕视频教程，并列入待办与下载工具',
     note: '把零度博客的 ComfyUI + MiniMax H3 教程加入收藏与待办，同时收藏 TDM Fast 高速下载器。',
