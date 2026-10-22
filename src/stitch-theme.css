@@ -223,7 +223,7 @@ body {
 
 /* Stitch archive and article layouts */
 .stitch-list-page,.stitch-detail-page { padding-top: 1px; }
-.stitch-list-page .archive-list-main { width:min(calc(100% - 56px),1700px); max-width:1700px; padding-top:112px; }
+.stitch-list-page .archive-list-main { width:min(calc(100% - 56px),1440px); max-width:1440px; padding-top:112px; }
 .archive-breadcrumb { display:flex; align-items:center; gap:12px; margin-bottom:34px; color:#77899d; font-size:12px; }
 .archive-breadcrumb a { color:#91a7bd; text-decoration:none; }
 .archive-breadcrumb a:hover { color:var(--cyan); }
@@ -281,7 +281,7 @@ body {
 .archive-side-note span { color:#6fc9dd; font:9px var(--mono,monospace); letter-spacing:.12em; }
 .archive-side-note strong { color:#dbe9f4; font-size:13px; }
 .archive-side-note small { color:#8295a8; font-size:10px; }
-.stitch-detail-main { width:min(calc(100% - 56px),1700px); max-width:1700px; padding-top:112px; }
+.stitch-detail-main { width:min(calc(100% - 56px),1440px); max-width:1440px; padding-top:112px; }
 .detail-layout { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:48px; width:100%; }
 .stitch-article { min-width:0; }
 .article-taxonomy { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px; }
@@ -644,7 +644,7 @@ body { background:radial-gradient(ellipse at 84% 0%,rgba(98,145,203,.09),transpa
 }
 html, body { background-color: var(--stitch-bg); }
 .site-header,
-.site-header.page-width { padding-inline: max(24px, calc((100% - 1700px) / 2)); }
+.site-header.page-width { padding-inline: max(24px, calc((100% - 1440px) / 2)); }
 .site-header .wordmark { display: inline-flex; align-items: center; gap: 11px; }
 .site-header .wordmark-icon {
   display: grid; width: 34px; height: 34px; place-items: center;
@@ -667,7 +667,7 @@ html, body { background-color: var(--stitch-bg); }
 .header-status { display: inline-flex; align-items: center; gap: 6px; color: #8ba0b4; font: 9px var(--mono); letter-spacing: .06em; white-space: nowrap; }
 .header-status i, .availability-dot { width: 6px; height: 6px; border-radius: 50%; background: #56d6a0; box-shadow: 0 0 10px rgba(86, 214, 160, .7); }
 .header-status b { margin-left: 5px; color: #667a91; font-size: 12px; }
-.body-layout.page-width { width: min(calc(100% - 56px), 1700px); grid-template-columns: minmax(270px, 330px) minmax(0, 1fr); gap: 24px; }
+.body-layout.page-width { width: min(calc(100% - 56px), 1440px); grid-template-columns: minmax(270px, 330px) minmax(0, 1fr); gap: 24px; }
 .profile-column .about-section { padding: 20px; }
 .profile-column .about-grid { gap: 17px; }
 .profile-column .portrait-card { aspect-ratio: 1.12; border-color: rgba(56, 189, 248, .32); box-shadow: 0 0 28px rgba(56, 189, 248, .08); }
