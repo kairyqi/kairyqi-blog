@@ -185,6 +185,8 @@
 .favorite-meta b{font-size:10px}
 .favorite-info h3{font-size:16px;margin:12px 0 5px}
 .favorite-info p{font-size:12px;line-height:1.7}
+.favorite-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.favorite-tags span{font:9px var(--mono);color:#5b7088;border:1px solid #dce7f1;background:#eef4fb;padding:3px 9px;border-radius:20px}
 .archive-row-main strong{font-size:19px}
 .archive-excerpt{font-size:13px}
 @media(max-width:720px){
