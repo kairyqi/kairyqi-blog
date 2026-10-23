@@ -254,6 +254,7 @@ const bookmarks = [
   { category: '网站设计', type: '视觉灵感', title: 'Pinterest', note: '收集视觉灵感，参考网站设计与页面布局。', tags: ['视觉灵感', '网页设计', '实用网站'], icon: 'spark', label: '网站设计', link: 'https://jp.pinterest.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://jp.pinterest.com/' },
   { category: 'AI 视频生成 · ComfyUI', type: '教程 · 工作流', title: 'ComfyUI + MiniMax H3：一张照片生成 360° 环绕视频', note: '零度博客教程：本地免费部署 MiniMax H3 360° 环绕 LoRA，附完整工作流，用一张照片即可生成环绕人物/物体的 360° 视频。', tags: ['AI视频', 'ComfyUI', 'MiniMax H3', '教程', '工作流', '本地部署'], icon: 'play', label: 'AI 视频', link: 'https://www.freedidi.com/25755.html', image: 'https://image.thum.io/get/width/1200/crop/800/https://www.freedidi.com/25755.html' },
   { category: '下载工具 · 效率', type: '高速下载器', title: 'TDM Fast', note: '零度博客同款高速下载器，用于加速开源模型与大文件下载。', tags: ['下载工具', '效率工具', '实用网站', '模型下载'], icon: 'link', label: '下载工具', link: 'https://get.tdmfast.com/', image: 'https://image.thum.io/get/width/1200/crop/800/https://get.tdmfast.com/' },
+  { category: 'AI 模型社区', type: '开源社区', title: '魔搭社区', note: '阿里达摩院开源 AI 模型社区（ModelScope），托管模型、数据集与开源工具，便于研究、下载与体验。', tags: ['AI社区', '模型', '开源', 'ModelScope', '实用网站'], icon: 'spark', label: '魔搭社区', link: 'https://modelscope.cn/', image: 'https://image.thum.io/get/width/1200/crop/800/https://modelscope.cn/' },
 ]
 
 function ArchiveHeader({ homeUrl }) {
