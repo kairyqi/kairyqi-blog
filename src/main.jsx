@@ -221,6 +221,20 @@ const logEntries = [
     ],
   },
   {
+    id: 'h3-continuum-extend-douyin', section: 'projects', date: '2026.10.23', category: '待办项目 · AI 视频',
+    title: '研究 H3 短剧续生成：用 Continuum 接着生成（冲呀AI工作流抖音）',
+    note: '对照冲呀AI工作流抖音视频，研究 H3 短剧不够长时用 Continuum 续接生成的方法。',
+    tags: ['AI视频', 'MiniMax H3', '抖音', 'Continuum', '短剧', '续生成', '待研究'],
+    externalLink: 'https://v.douyin.com/hNY-ekI5V0M/',
+    body: [
+      '灵感来源：抖音账号「冲呀AI工作流」的作品《H3短剧不够长？用Continuum接着生成》（https://v.douyin.com/hNY-ekI5V0M/）。视频演示当 H3 生成的短剧长度不够时，用 Continuum 工具接着生成、延长片段。',
+      '与现有研究的关联：前面已把「360° 环绕视频工作流」「长视频/剧情玩法」「越狱解锁/最开放模型」三条 H3 待办列入；这条补充「短剧续接/延长生成」这一具体工作流，正好和「长视频/剧情」方向互补，可统一评估为 H3 长内容生产的手段。',
+      '计划研究：1）回看视频并确认 Continuum 的具体形态（独立工具、ComfyUI 节点还是在线服务）、与 H3 的衔接方式；2）理清「先由 H3 生成短片段、再用 Continuum 续接」的提示词与参数；3）结合本机 RTX 4070 12GB 与 ComfyUI 便携版评估能否本地跑通；4）判断能否沉淀为自有 H3 Studio 控制台的一个「续生成」模式。',
+      '实施原则：先做小范围验证，不动个人空间网站代码；视频文件较大，不进 Git，完成后用链接或对象存储引用。',
+      '完成标准：跑通或复现一个「H3 短剧 + Continuum 续接」样例，整理出所需工具、工作流与提示词要点，并作为经验沉淀（可写入技术笔记或自有 skill）。'
+    ],
+  },
+  {
     id: 'h3-360-orbit-and-tdmfast', section: 'journal', date: '2026.10.22', category: '日志 · 网站更新',
     title: '收藏 MiniMax H3 360° 环绕视频教程，并列入待办与下载工具',
     note: '把零度博客的 ComfyUI + MiniMax H3 教程加入收藏与待办，同时收藏 TDM Fast 高速下载器。',
